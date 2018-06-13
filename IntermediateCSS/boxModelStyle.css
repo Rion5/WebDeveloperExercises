@@ -1,0 +1,14 @@
+p{
+    /*Content - Width & Height*/
+    width: 50%; 
+    /* height: 100px; */
+    /*Border*/
+    border: 2px solid blue;
+    /*Padding - Space between element and border*/
+    padding-left: 50px;
+    /*Margin - Space outside the border (between elements)*/
+    margin: 100px;
+    margin: 20px 40px 500px 100px; /*Top Right Bottom Left*/
+    margin: auto;
+    /* We now have a 100px of space on all sides, outside the border */
+}

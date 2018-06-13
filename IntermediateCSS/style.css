@@ -1,9 +1,9 @@
 /*font-family*/
 p{
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Open Sans;
 }
 h1{
-    font-family: 'Courier New', Courier, monospace;
+    font-family: Raleway;
 }
 /*font-size*/
 /*
@@ -24,8 +24,17 @@ span{
     font-size: 2.0em;
     /*Notice that we did not specify the size. It is just 2x bigger than the P*/
 }
-/*font-weight*/
-/*line-height*/
+/*font-weight - How thick the lines are*/
+p{
+    font-weight: normal; 
+}
+/*line-height - Space between lines*/
+p{
+    line-height: 1.5;
+}
 /*text-align*/
+h1{
+    text-align: center;
+}
 /*text-decoration*/
 
