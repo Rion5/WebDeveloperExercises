@@ -1,0 +1,25 @@
+/*font-family*/
+p{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h1{
+    font-family: 'Courier New', Courier, monospace;
+}
+/*font-size*/
+h1{
+    font-size: 25px;
+}
+
+p{
+    
+}
+/*
+The size of an em value is dynamic. When defining the font-size prop, an em is equal to
+the size of the font that applies to the parent of the element in question.
+If you haven't set the font size anywhere on the page, then it is broswer default (16px)
+So by default 1em = 16px, 2 pm = 32px .... */
+/*font-weight*/
+/*line-height*/
+/*text-align*/
+/*text-decoration*/
+
