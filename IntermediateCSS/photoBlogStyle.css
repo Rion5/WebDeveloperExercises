@@ -1,0 +1,24 @@
+h1{
+    font-family: Raleway;
+    margin-left: 1.66%;
+    text-transform: capitalize;
+    
+}
+h2{
+    font-family: Raleway;
+    margin-left: 1.66%;
+    border-bottom: 3px solid #f1f1f1;
+    width:40%;
+    padding-bottom: 10px;
+}
+img{
+    width: 30%;
+    float: left; /*Specifies that an element should be placed along the left or right side of its container Gets rid of white space between image*/
+    margin: 1.66%; 
+    /*
+    We got 1.66 because each img is 30% width.
+    I wanted 3 pics in a row, than 3 * 30 = 90.
+    I have 10% excess
+    We have 6 margins to think about. Left and Right sides.
+    so 10 / 6 == 1.66*/
+}
