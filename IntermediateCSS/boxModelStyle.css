@@ -2,7 +2,7 @@ p{
     /*Content - Width & Height*/
     width: 50%; 
     /* height: 100px; */
-    /*Border*/
+    /*Border - Border Surrounding the element*/
     border: 2px solid blue;
     /*Padding - Space between element and border*/
     padding-left: 50px;
