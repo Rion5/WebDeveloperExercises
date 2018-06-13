@@ -6,18 +6,24 @@ h1{
     font-family: 'Courier New', Courier, monospace;
 }
 /*font-size*/
-h1{
-    font-size: 25px;
-}
-
-p{
-    
-}
 /*
 The size of an em value is dynamic. When defining the font-size prop, an em is equal to
 the size of the font that applies to the parent of the element in question.
 If you haven't set the font size anywhere on the page, then it is broswer default (16px)
 So by default 1em = 16px, 2 pm = 32px .... */
+h1{
+    font-size: 5.0em;
+}
+body{
+    font-size: 10px;
+}
+p{
+    font-size: 2em;
+}
+span{
+    font-size: 2.0em;
+    /*Notice that we did not specify the size. It is just 2x bigger than the P*/
+}
 /*font-weight*/
 /*line-height*/
 /*text-align*/
