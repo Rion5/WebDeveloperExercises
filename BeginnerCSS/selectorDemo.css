@@ -1,0 +1,65 @@
+/*Element*/
+li{
+
+}
+/*Class*/
+.hello{
+
+}
+/*Id*/
+#name{
+
+}
+/*Star - Affects all Elements*/
+*{
+    border: 1px solid antiquewhite;
+}
+/*Descendant Selector - EG I want to select all the anchor tags that are 'Descendants' of an li*/
+li a{
+    color:red;
+}
+/*Child Selector - Similar to Descendant Selector. However, Descendant will find ALL elements. Child will find only those that belong to its parent
+IE 
+<div class="first">
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <div class="second">
+          <p></p>
+    </div> 
+</div>
+.first p {
+    This will target all the <p> elements in the HTML above 
+}
+
+.first > p {
+    This will target all <p> elements except the one nested within the "second" class
+}
+*/
+
+/*Adjacent Selector - Select all ULs outside h4*/
+h4+ul{
+    border: 1px solid red;
+}
+/*Attribute Selector - Select all elements based off a certain attribute
+In this example, select all links, that are linked to Google*/
+a[href="http://www.google.com"]{
+    background: lightblue;
+}
+/*nth of type - It takes a number, then selects every nth element
+In this case I want to select the final ul*/
+ul:nth-of-type(3){
+    background: lightpink;
+}
+
+li:nth-of-type(even){
+    background: purple;
+}
+/*
+Specificity 
+Id Selector: The Highest level of specificity
+Class / Attribute / Pseudo-Class: Middle Level specificity
+Type Selectors: The lowest level of specificity
+
+*/

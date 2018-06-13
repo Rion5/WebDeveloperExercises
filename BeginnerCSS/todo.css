@@ -1,0 +1,23 @@
+body{
+    background: orange;
+}
+
+div{
+    background:antiquewhite;
+}
+
+li{
+    border: 2px solid black;
+}
+p{
+    color: blueviolet;
+}
+#special{
+    color: black;
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+.highlight{
+    background: yellow;
+}

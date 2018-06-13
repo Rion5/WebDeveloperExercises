@@ -1,0 +1,41 @@
+/*
+For CSS Colors, Hexadecimal
+First 2 numbers = Red levels
+Second 2 numbers = Green levels
+Last 2 numbers = Blue levels
+
+RGB Levels 
+rbg(0-255, 0-255, 0-255)
+0 = Lack of Color, 255 = Pure Red / Green / Blue
+
+RGBA - Just like RGB but with an alpha(transparency) channel. Ranges from 0.0 - 1.0
+*/
+
+/*Border Attributes
+border-width:
+border-style:
+border-color:
+
+or shorthand way of writing
+border: width style color 
+*/
+h1{
+    color: purple;
+    /* border-width: 5px;
+    border-style: solid;
+    border-color: purple; */
+
+    border:5px solid purple;
+}
+h4{
+    background: rgb(255, 100, 80)
+}
+li{
+    color: #FF0000;
+}
+body{
+    background:url(https://www.tempaperdesigns.com/media/catalog/product/cache/1/image/1200x1200/9df78eab33525d08d6e5fb8d27136e95/w/o/woodgrain_texturedpewter_wo079_rgb_swatch_1.jpg);
+    /* Example of how to have background image not tile on top of each other 
+    background-repeat: no-repeat;
+    background-size: cover; */
+}
