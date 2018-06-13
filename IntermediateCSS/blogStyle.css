@@ -1,0 +1,47 @@
+body{
+    /* Border: Surrounding Element */
+    border: 20px solid #bdc3c7;
+    /* Padding: Space inside the border */
+    padding: 24px;
+    /*Set the width to 80%, of the parent width (the screen), but cap the max to be 700px*/
+    width: 80%;
+    max-width: 700px;
+    /* Margin: Space outside the border */
+    margin: 10px auto; /*10 = Top & Bottom, auto = Left and Right*/
+
+    font-family: 'Montserrat', sans-serif;
+}
+h2{
+    text-transform: capitalize;
+    /* font-family: 'Montserrat', sans-serif; */
+    font-family: 'Kurale';
+    font-size: 2.0rem;
+}
+hr{
+    color: #2c3e50;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+/* Class selector: Use '.class_name' */
+.quote{
+    border-left: 3px solid #bdc3c7;
+    padding-left: 2px;
+}
+
+.date{
+    color: #3498db;
+    text-transform: uppercase;
+    /* rem: same as em, but is not set by parent element, but is actually set by page's root element 
+    Good way to do proportional fonts, without worrying about nested elements*/
+    letter-spacing: 0.25rem;
+}
+
+.articlePost{
+    margin-bottom: 20px;
+}
+
+.name{
+    font-size: 12px;
+    /* float: right; */
+}
