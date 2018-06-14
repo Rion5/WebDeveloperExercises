@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forms Demo</title>
+</head>
+<body>
+    <h1>Login</h1>
+        <!-- Form Example
+    action: the URL to send form data to
+    method: the type of HTTP Request 
+Default: action = current page & method = GET-->
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" placeholder="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="password" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" placeholder="email" required>
+        
+        <input type="submit">
+        <br>
+        <br>
+        <br>
+        <!-- Radio Button Example -->
+        <p>Do you prefer cats or dogs</p>
+        <form action="" method="get">
+            <label for="cats">Cats: </label>
+            <input type="radio" name="petChoice" id="cats" value = "Cat">
+            <label for="dogs">Dogs: </label>
+            <input type="radio" name="petChoice" id="dogs" value = "Dog">
+
+            <p>What is your current mood?</p>
+            <select name="mood" id="">
+                <option value="Happy">:)</option>
+                <option value="Ok">:|</option>
+                <option value="Sad">:(</option>
+            </select>
+            <button>Submit</button> 
+            <!-- Note: By giving the input the same name 'petChoice' this limits
+                user to only being able to select 1 of those 2 radio buttons 
+            
+                Also by default: If a button is at the bottom of a form, this
+                will act as a submit button-->
+
+            <input type="text">
+            <textarea name="paragraph" id="" cols="50" rows="10"></textarea>
+        </form>
+        
+    </form>
+</body>
+</html>
+<!-- 
+Notes: In HTML we can do some Simple Validations.
+By using the keyword required, this stops the form from being able to submit,
+until we have an input.
+
+We can also perform type validations. By using the same keyword 'required'
+Depnding on the input type, the validation will require a different format
+-->
