@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form Exercise</title>
+</head>
+
+<body>
+    <h1>Register</h1>
+    <form>
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="firstName" placeholder="John" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="lastName" placeholder="Smith" required>
+
+        <div>
+            <label for="maleGenderChoice">Male</label>
+            <input type="radio" name="genderChoice" id="maleGenderChoice" value="Male">
+            <label for="femaleGenderChoice">Female</label>
+            <input type="radio" name="genderChoice" id="femaleGenderChoice" value="Female">
+            <label for="otherGenderChoice">Other</label>
+            <input type="radio" name="genderChoice" id="otherGenderChoice" value="Other">
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="your email" required>
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password" placeholder="your password" pattern=".{5,10}" required title="5 to 10 characters">
+        </div>
+        <div>
+            <label>Birthday:</label>
+            <select name="month" id="month">
+                <option value="0">Month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+            </select>
+            <select name="day" id="day">
+                <option value="0">Day</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+            <select name="year" id="year">
+                    <option value="0">Year</option>
+                <option value=2000>2000</option>
+                <option value=2001>2001</option>
+            </select>
+        </div>
+        <label for="termsAndConditions">I agree to the terms and conditions</label>
+        <input type="checkbox" name="termsAndConditions" id="termsAndConditions" value="Yes">
+        <br>
+
+        <input type="submit">
+    </form>
+</body>
+
+</html>
+
+<!-- To complete this exercise, you will need to use...
+Text input, password input, email input
+Radio Buttons, Select Tag, Checkbox Input 
+
+Validations required for First Name, Last Name, Email
+Bonus Points: Limit Password between 5 - 10 characters
+
+Note: We will later look at ways so that we do not have to manually fill in all the options for the dropdown box
+-->
