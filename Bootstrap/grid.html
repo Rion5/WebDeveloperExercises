@@ -1,70 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="bootstrap.css">
     <title>Bootstrap Grid System</title>
-    <style type = "text/css">
-    .pink{
-        background: pink;
-        border: 1px solid purple;
-    }
-    body{
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
+    <style type="text/css">
+        .pink {
+            background: pink;
+            border: 1px solid purple;
+        }
+
+        .orange {
+            background: orange;
+            border: 1px dashed red;
+        }
+
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+        }
     </style>
 </head>
+
 <body>
     <!-- Objectives -->
     <!-- 1. Understand the purpose of Grid System -->
     <!-- 2. Understand the 4 different sizes -->
     <!-- 3. Write Nested Grids -->
     <!-- *** Bootstrap containers can be divided up into 12 sections *** -->
-    <div class = "container">
+    <div class="container">
         <h2>Bootstrap Grid System Basics</h2>
-        <h3 class = "float-left">Chai Grindean</h3>
+        <h3 class="float-left">Chai Grindean</h3>
         <br>
         <hr>
         <p>Bootstrap containers can be divided up into 12 sections</p>
         <p>This shows a few various ways we can separate the columns</p>
-        <div class = "row">
-            <div class = "col-lg-6 pink">COL LG 6</div>
-            <div class = "col-lg-4 pink">COL LG 4</div>
-            <div class = "col-lg-2 pink">COL LG 2</div>
+        <div class="row">
+            <div class="col-lg-6 pink">COL LG 6</div>
+            <div class="col-lg-4 pink">COL LG 4</div>
+            <div class="col-lg-2 pink">COL LG 2</div>
         </div>
-        <div class = "row">
-            <div class = "col-lg-4 pink">COL LG 4</div>
-            <div class = "col-lg-4 pink">COL LG 4</div>
-            <div class = "col-lg-4 pink">COL LG 4</div>
+        <div class="row">
+            <div class="col-lg-4 pink">COL LG 4</div>
+            <div class="col-lg-4 pink">COL LG 4</div>
+            <div class="col-lg-4 pink">COL LG 4</div>
         </div>
-        <div class = "row">
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
-            <div class = "col-lg-1 pink">COL LG 1</div>
+        <div class="row">
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
+            <div class="col-lg-1 pink">COL LG 1</div>
         </div>
         <br>
-        <p>This example makes use for the 4 different device sizes</p>
-        <p>Extra small (Phones): <768px | .col-xs-# </p>
+        <h4>This example makes use for the 4 different device sizes</h4>
+        <p>Extra small (Phones):<=768px | .col-xs-# </p>
         <p>Small (Tablets): >= 768px | .col-sm-#</p>
         <p>Medium (Desktops): >= 992px | .col-md-#</p>
         <p>Large (Desktops): >= 1200px | .col-lg-#</p>
-        <div class = "row">
-            <div class ="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3</div>
-            <div class ="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3</div>
-            <div class ="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3</div>
-            <div class ="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3</div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3 | MD 3 | SM 6</div>
+            <div class="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3 | MD 3 | SM 6</div>
+            <div class="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3 | MD 3 | SM 6</div>
+            <div class="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3 | MD 3 | SM 6</div>
         </div>
+        <br>
+        <h4>Nested Grid Example</h4>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 pink">
+                <div class="row">
+                    <div class="col-md-6 orange">Nested Grid</div>
+                    <div class="col-md-6 orange">The Other Half</div>
+                </div>
+                <!--row-->
+            </div>
+            <!--Nested Grid-->
+            <div class="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3 | MD 3 | SM 6</div>
+            <div class="col-lg-3 col-md-3 col-sm-6 pink"> COL LG 3 | MD 3 | SM 6</div>
+            <div class="col-lg-3 col-md-3 col-sm-6 pink">
+                <div class="row">
+                    <!-- COL LG 3 | MD 3 | SM 6 -->
+                    <div class="col-lg-2 orange">column</div>
+                    <div class="col-lg-2 orange">col-lg-3</div>
+                    <div class="col-lg-2 orange">split</div>
+                    <div class="col-lg-2 orange">into</div>
+                    <div class="col-lg-2 orange">6</div>
+                    <div class="col-lg-2 orange">sections</div>
+                </div>
+            </div>
+        </div>
+        <!--row-->
     </div>
 </body>
+
 </html>
