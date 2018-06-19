@@ -2,6 +2,17 @@
     text-align: center;
 }
 
+.jumbotron{
+    font-weight: 700px;
+    width: 100%;
+    white-space: pre-wrap;
+    text-align: center;
+    background: #ecf0f1;
+    color: #2c3e50;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
 body{
     padding-top: 70px;
 }
@@ -10,12 +21,9 @@ li{
     text-align: left;
 }
 
-h1{
-    font-weight: 700;
-    width: 100%;
-    /* white-space: nowrap; */
+h1 h3{
+    font-size: 3em;
 }
-
 hr{
     border-top: 1px solid #f8f8f8;
     border-bottom: 1px solid rbga(0,0,0,0.2);
