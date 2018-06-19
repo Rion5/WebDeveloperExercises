@@ -5,15 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <title>Image Gallery</title>
 </head>
 
 <body>
-    <div class="jumbotron">
-        <h1>Image Gallery</h1>
-        <h4 class="float-left">Chai Grindean</h4>
+<nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <!-- View Collapsed Content Button -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navExample" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            <a href="#" class="navbar-brand">Home</a>
+        </div>
+        <div class="container">
+            <!-- Collapse - When smaller screen size is reached -->
+            <div class="collapse navbar-collapse" id="bs-navExample">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Sign up</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </div>
+        </div> <!--container-->
+    </nav> <!--navbar-->
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Image Gallery</h1>
+            <p>Chai Grindean</p>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
