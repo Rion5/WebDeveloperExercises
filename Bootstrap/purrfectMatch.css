@@ -1,13 +1,31 @@
 #content{
     text-align: center;
     /* Move content down the screen by 25% */
-    padding-top: 25%;
+    padding-top: 10%;
+}
+
+html{
+    height: 100%;
 }
 
 body{
-    background: url(https://bit.ly/2MDwf5H);
+    background: url(https://bit.ly/2yoWz0b);
     background-size:cover;
     background-position: center;
     font-family: Lato;
+    /* Note: I am able to set the body to white, without affecting every single
+    The Buttons and Links have a higher specificity style being applied to them */
+    color: white;
 }
 
+h1{
+    font-weight: 700;
+    /* Note: 5em means that h1 is 5x larger than its parent element */
+    font-size: 5em; 
+}
+
+hr{
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rbga(0,0,0,0.2);
+}
