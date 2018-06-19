@@ -4,3 +4,8 @@
     background-size: cover;
     background-position: center;
 }
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
