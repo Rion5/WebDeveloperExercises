@@ -15,9 +15,15 @@ while(input !=="quit"){
         });
         console.log("*****");
     }
+    else if(input ==="delete"){
+        var index = prompt("Enter index of todo to delete");
+        //Delete that todo via splice()
+        todos.splice(index,1);
+        console.log("Deleted Todo");
+    }
     else{
         alert("Please enter use one of the commands\nnew, view, quit");
-        console.log("Please enter use one of the commands\nnew, view, quit");
+        console.log("Please enter use one of the commands\nnew, view, delete, quit");
     }
     input = prompt("What would you like to do?");
 }
