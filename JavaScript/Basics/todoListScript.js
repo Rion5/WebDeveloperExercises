@@ -8,8 +8,12 @@ while(input !=="quit"){
         console.log(todos);
     }
     else if(input === "view"){
-        alert(todos);
-        console.log(todos);
+        //alert(todos);
+        console.log("*****");
+        todos.forEach(function(todo, index){
+            console.log(index+": "+todo);
+        });
+        console.log("*****");
     }
     else{
         alert("Please enter use one of the commands\nnew, view, quit");
