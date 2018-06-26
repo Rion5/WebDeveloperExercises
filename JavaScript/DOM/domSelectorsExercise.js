@@ -13,6 +13,15 @@
  *      - Returns a List of elements that matches a given CSS-style selector
  * */
 
+//1) Come up with at least 4 different ways to select just the first <p> tag
+document.getElementById("first");
+document.querySelector("#first");
+document.getElementsByClassName("special")[0];  //Returns a list with class name special, and then selecting the first index [0]
+document.querySelector(".special");             //Returns just the first result with a class name special.
+document.querySelector("p");
 
-//1) Come up with 4 different ways to select the first <p> tag
-var firstWay = document.getElementById("first");
+
+//2) Using a classList, make the h1 tag special (add the special class)
+var h1Tag = document.querySelector("h1");
+h1Tag.classList.add("special");                 //Adds the class 'special' to first h1 tag
+h1Tag.classList.toggle("special");              //Toggles the special class: OFF
