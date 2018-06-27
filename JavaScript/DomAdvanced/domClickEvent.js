@@ -7,10 +7,10 @@ button.addEventListener("click",function(){
     console.log("Button Clicked");
     if(!isBlue){
         document.body.style.background = "blue";
-        isBlue = true;
     }
     else{
         document.body.style.background = "white";
-        isBlue = false;
     }
+    //At the end of this click, it will set the isBlue to the opposite value.
+    isBlue = !isBlue;
 });
