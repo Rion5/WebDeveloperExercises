@@ -26,12 +26,20 @@ for(var i = 0; i<squares.length; i++){
         var clickedColor = this.style.backgroundColor;
         if(clickedColor === pickedColor){
             messageDisplay.textContent = "Correct!";
+            changeColors(clickedColor);             //Changes all squares to the clickedColor
         }
         else{
             this.style.backgroundColor = "#232323";
             messageDisplay.textContent = "Try Again";
         }
     });
+}
+
+//Change the color of ALL squares
+function changeColors(color){
+    for(var i = 0; i < colors.length; i++){
+        squares[i].style.backgroundColor = color;
+    }
 }
 
 
