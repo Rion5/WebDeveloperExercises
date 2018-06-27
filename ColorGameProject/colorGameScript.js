@@ -7,9 +7,8 @@ var colors = [
     "rgb(0, 0, 255)",
     "rgb(255, 0, 255)",
 ];
+var pickedColor = pickColor();
 //Display the pickedColor
-//Hard Coded pickedColor (later on will randomize)
-var pickedColor = colors[3];
 var colorDisplay = document.getElementById("colorDisplay");
 colorDisplay.textContent = pickedColor;
 //Square Elements
@@ -42,4 +41,8 @@ function changeColors(color){
     }
 }
 
-
+//Pick a random color
+function pickColor(){
+    var random = Math.floor(Math.random() * colors.length);
+    return colors[random];
+}
