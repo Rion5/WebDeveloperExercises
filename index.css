@@ -18,6 +18,10 @@
     flex-wrap: wrap;
 }
 
+.bold{
+    font-weight: bold;
+}
+
 body{
     padding-top: 70px;
 }
