@@ -14,10 +14,14 @@ body{
     max-width: 600px;
 }
 
+#stripe{
+    height: 30px;
+    background-color: white;
+    text-align: center;
+
+}
+
 h1{
     color:white;
 }
 
-span{
-    color: white;
-}
