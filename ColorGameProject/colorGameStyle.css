@@ -25,3 +25,7 @@ h1{
     color:white;
 }
 
+.selected{
+    background: blue;
+    
+}

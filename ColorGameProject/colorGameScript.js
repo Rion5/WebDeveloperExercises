@@ -8,6 +8,9 @@ var squares = document.querySelectorAll(".square");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
+var easyBtn = document.querySelector("#easyBtn");
+var mediumBtn = document.querySelector("#mediumBtn");
+var hardBtn = document.querySelector("#hardBtn");
 
 //Loop though each square 
 //      assign it a color from the colors array
@@ -72,4 +75,20 @@ resetButton.addEventListener("click", function(){
     }
     h1.style.backgroundColor = "#232323";
     resetButton.textContent = "New Colors";
+});
+
+easyBtn.addEventListener("click",function(){
+    easyBtn.classList.add("selected");
+    mediumBtn.classList.remove("selected");
+    hardBtn.classList.remove("selected");
+});
+mediumBtn.addEventListener("click",function(){
+    easyBtn.classList.remove("selected");
+    mediumBtn.classList.add("selected");
+    hardBtn.classList.remove("selected");
+});
+hardBtn.addEventListener("click",function(){
+    easyBtn.classList.remove("selected");
+    mediumBtn.classList.remove("selected");
+    hardBtn.classList.add("selected");
 });
