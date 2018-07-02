@@ -1,5 +1,7 @@
 body{
     background-color: #232323;
+    margin: 0px;
+    font-family: "Montserrat","Avenir";
 }
 .square{
     width: 30%;
@@ -14,6 +16,10 @@ body{
     max-width: 600px;
 }
 
+#message{
+    display:inline-block;
+}
+
 #stripe{
     height: 30px;
     background-color: white;
@@ -21,8 +27,30 @@ body{
 
 }
 
+#colorDisplay{
+    font-size: 200%;
+}
+
 h1{
+    text-align: center;
+    text-transform: uppercase;
+    line-height: 1.1;
+    font-weight: normal;
     color:white;
+    background-color: steelblue;
+    margin: 0px;
+    padding: 20px 0;
+}
+
+button{
+    border:none;
+    background-color: none;
+    text-transform: uppercase;
+    height: 100%;
+    font-weight: 700;
+    color: steelblue;
+    letter-spacing: 1px;
+    font-size: inherit;
 }
 
 .selected{
