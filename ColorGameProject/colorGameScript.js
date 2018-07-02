@@ -9,47 +9,17 @@ var squares = document.querySelectorAll(".square");
 var messageDisplay = document.querySelector("#message");
 var h1 = document.querySelector("h1");
 var resetButton = document.querySelector("#reset");
-var easyBtn = document.querySelector("#easyBtn");
-var mediumBtn = document.querySelector("#mediumBtn");
-var hardBtn = document.querySelector("#hardBtn");
 var modeButtons = document.querySelectorAll(".mode");
 
-//Button Logic
-for(var i = 0; i <modeButtons.length; i++){
-    modeButtons[i].addEventListener("click",function(){
-        modeButtons[0].classList.remove("selected");
-        modeButtons[1].classList.remove("selected");
-        modeButtons[2].classList.remove("selected");
-        this.classList.add("selected");
-        if(this.textContent == "Easy"){
-            numSquares = 3;
-        } else if (this.textContent =="Medium"){
-            numSquares = 6;
-        } else{
-            numSquares = 9;
-        }
-        reset();
-    });
-}
+//Starting Function that adds event listeners to each element
+initialize();
 
-//Loop though each square 
-//      assign it a color from the colors array
-//      add a click event listener
-for(var i = 0; i<squares.length; i++){
-    squares[i].style.backgroundColor = colors[i];
-    squares[i].addEventListener("click", function(){
-        var clickedColor = this.style.backgroundColor;
-        if(clickedColor === pickedColor){
-            messageDisplay.textContent = "Correct!";
-            resetButton.textContent = "Play Again?";
-            changeColors(clickedColor);             //Changes all squares to the clickedColor
-            h1.style.backgroundColor = clickedColor;
-        }
-        else{
-            this.style.backgroundColor = "#232323";
-            messageDisplay.textContent = "Try Again";
-        }
-    });
+function initialize(){
+    //Difficulty Mode Button - Event Listener
+    setModeButtons();
+    //Squares Button - Event Listener and Logic
+    setSquares();
+    reset();
 }
 
 //Change the color of ALL squares
@@ -90,6 +60,8 @@ resetButton.addEventListener("click", function(){
     reset();
 });
 
+//Reset Squares Colors
+//If square has a color, then display it. Else hide it
 function reset(){
     colors = generateRandomColors(numSquares);
     pickedColor = pickColor();
@@ -109,8 +81,50 @@ function reset(){
         }
     }
 }
-
+//Difficulty Mode Button - Event Listener
+//Sets number of squares on screen according to mode selected
+function setModeButtons(){
+    for(var i = 0; i <modeButtons.length; i++){
+        modeButtons[i].addEventListener("click",function(){
+            modeButtons[0].classList.remove("selected");
+            modeButtons[1].classList.remove("selected");
+            modeButtons[2].classList.remove("selected");
+            this.classList.add("selected");
+            if(this.textContent == "Easy"){
+                numSquares = 3;
+            } else if (this.textContent =="Medium"){
+                numSquares = 6;
+            } else{
+                numSquares = 9;
+            }
+            reset();
+        });
+    }
+}
+function setSquares(){
+    //Loop though each square 
+    //      assign it a color from the colors array
+    //      add a click event listener
+    for(var i = 0; i<squares.length; i++){
+        squares[i].addEventListener("click", function(){
+            var clickedColor = this.style.backgroundColor;
+            if(clickedColor === pickedColor){
+                messageDisplay.textContent = "Correct!";
+                resetButton.textContent = "Play Again?";
+                changeColors(clickedColor);             //Changes all squares to the clickedColor
+                h1.style.backgroundColor = clickedColor;
+            }
+            else{
+                this.style.backgroundColor = "#232323";
+                messageDisplay.textContent = "Try Again";
+            }
+        });
+    }
+}
 /**Refactored Code - This is the old method
+var easyBtn = document.querySelector("#easyBtn");
+var mediumBtn = document.querySelector("#mediumBtn");
+var hardBtn = document.querySelector("#hardBtn");
 easyBtn.addEventListener("click",function(){
     easyBtn.classList.add("selected");
     mediumBtn.classList.remove("selected");
