@@ -82,6 +82,7 @@ resetButton.addEventListener("click", function(){
     }
     h1.style.backgroundColor = "steelblue";
     resetButton.textContent = "New Colors";
+    messageDisplay.textContent = "";
 });
 
 easyBtn.addEventListener("click",function(){
@@ -101,6 +102,8 @@ easyBtn.addEventListener("click",function(){
             squares[i].style.display = "none";
         }
     }
+    resetButton.textContent = "New Colors";
+    messageDisplay.textContent = "";
 });
 mediumBtn.addEventListener("click",function(){
     easyBtn.classList.remove("selected");
@@ -120,7 +123,8 @@ mediumBtn.addEventListener("click",function(){
             squares[i].style.display = "none";
         }
     }
-
+    resetButton.textContent = "New Colors";
+    messageDisplay.textContent = "";
 });
 hardBtn.addEventListener("click",function(){
     easyBtn.classList.remove("selected");
@@ -135,4 +139,6 @@ hardBtn.addEventListener("click",function(){
         squares[i].style.background = colors[i];
         squares[i].style.display = "block";
     }
+    resetButton.textContent = "New Colors";
+    messageDisplay.textContent = "";
 });
