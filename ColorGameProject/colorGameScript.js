@@ -12,6 +12,26 @@ var resetButton = document.querySelector("#reset");
 var easyBtn = document.querySelector("#easyBtn");
 var mediumBtn = document.querySelector("#mediumBtn");
 var hardBtn = document.querySelector("#hardBtn");
+var modeButtons = document.querySelectorAll(".mode");
+
+//Button Logic
+for(var i = 0; i <modeButtons.length; i++){
+    modeButtons[i].addEventListener("click",function(){
+        modeButtons[0].classList.remove("selected");
+        modeButtons[1].classList.remove("selected");
+        modeButtons[2].classList.remove("selected");
+        this.classList.add("selected");
+        if(this.textContent == "Easy"){
+            numSquares = 3;
+        } else if (this.textContent =="Medium"){
+            numSquares = 6;
+        } else{
+            numSquares = 9;
+        }
+        reset();
+    });
+}
+
 //Loop though each square 
 //      assign it a color from the colors array
 //      add a click event listener
@@ -67,9 +87,17 @@ function randomColor(){
 //  Pick a new random color from array
 //  change colors of squares
 resetButton.addEventListener("click", function(){
+    reset();
+});
+
+function reset(){
     colors = generateRandomColors(numSquares);
     pickedColor = pickColor();
     colorDisplay.textContent = pickedColor;
+    h1.style.backgroundColor = "steelblue";
+    resetButton.textContent = "New Colors";
+    messageDisplay.textContent = "";
+
     for(var i = 0; i < squares.length; i ++){
         squares[i].style.background = colors[i];
         if(colors[i]){
@@ -80,11 +108,9 @@ resetButton.addEventListener("click", function(){
             squares[i].style.display = "none";
         }
     }
-    h1.style.backgroundColor = "steelblue";
-    resetButton.textContent = "New Colors";
-    messageDisplay.textContent = "";
-});
+}
 
+/**Refactored Code - This is the old method
 easyBtn.addEventListener("click",function(){
     easyBtn.classList.add("selected");
     mediumBtn.classList.remove("selected");
@@ -142,3 +168,4 @@ hardBtn.addEventListener("click",function(){
     resetButton.textContent = "New Colors";
     messageDisplay.textContent = "";
 });
+    **/
