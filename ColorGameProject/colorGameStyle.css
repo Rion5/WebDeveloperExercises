@@ -3,12 +3,18 @@ body{
     margin: 0px;
     font-family: "Montserrat","Avenir";
 }
+
 .square{
     width: 30%;
     background: purple;
     padding-bottom: 30%;
     float: left;
     margin: 1.66%;
+}
+
+.selected{
+    color: white;
+    background-color: steelblue;
 }
 
 #container{
@@ -51,9 +57,10 @@ button{
     color: steelblue;
     letter-spacing: 1px;
     font-size: inherit;
+    transition: all 0.5s;
 }
 
-.selected{
-    background: blue;
-    
+button:hover{
+    color: white;
+    background-color: steelblue;
 }
