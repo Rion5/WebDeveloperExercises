@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery Basics</title>
+</head>
+<body>
+<h1>jQuery Basics</h1>
+
+<h2>Objectives</h2>
+<ul>
+    <li>Learn to select elements with $()</li>
+    <li>User .css() to style elements</li>
+</ul>
+
+<h3>Selecting with jQuery</h3>
+<h4>First we must select the element/s</h4>
+<b>$("selectorGoesHere")</b>
+<ul>
+    <li>To select all img tags</li>
+    <ul><li>$("img")</li></ul>
+    <li>To select all elements with class 'sale'</li>
+    <ul><li>$(".sale")</li></ul>
+    <li>To select element with id "bonus"</li>
+    <ul><li>$("#bonus")</li></ul>
+    <li>To select all 'a' (anchor) tags inside of 'li's</li>
+    <ul><li>$("li a")</li></ul>
+</ul>
+
+<h3>Manipulating Style</h3>
+<h4>Then we manipulate </h4>
+<p>the .css() method is jQuery's interface to styling.</p>
+<b>$(selector).css(property, value)</b>
+
+<b><p>Example - This will select the h1 tag, and change the css color to yellow</p></b>
+<p>$("h1").css("color", "yellow");</p>
+
+<b><p>Select element with id "special" and give it a red border</p></b>
+<p>$("#special").css("border", "2px solid red");</p>
+
+We can also pass in an object with styles
+var styles = {
+    backgroundColor : "pink:,
+    fontWeight: "bold"
+};
+$("#special").css(styles);
+</body>
+</html>
