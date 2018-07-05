@@ -1,10 +1,33 @@
 body{
     background-color: lightblue;
+    font-family: Roboto;
+}
+h1{
+    background-color: #2980b9;
+    color:white;
+    margin: 0;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: normal;
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    background-color: white;
+}
+li:nth-child(2){
+    background-color: #f7f7f7;
 }
 #container{
     width: 360px;
-    margin: 0 auto;
-    border: 2px solid gray;
+    margin: 100px auto;
+    /* border: 2px solid gray; */
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    background-color: #f7f7f7;
 }
 .completed{
     color:gray;
