@@ -30,12 +30,18 @@ li{
 li:nth-child(2n){
     background-color: #f7f7f7;
 }
+li:hover span{
+    width: 40px;
+}
 span{
     background-color: #e74c3c;
     height: 40px;
     margin-right: 20px;
     text-align: center;
     color: white;
+    width: 0px;
+    display: inline-block;
+    transition: 0.2s linear;
 }
 input{
     font-size:18px;
