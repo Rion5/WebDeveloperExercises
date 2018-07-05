@@ -32,6 +32,7 @@ li:nth-child(2n){
 }
 li:hover span{
     width: 40px;
+    opacity: 1.0;
 }
 span{
     background-color: #e74c3c;
@@ -42,6 +43,7 @@ span{
     width: 0px;
     display: inline-block;
     transition: 0.2s linear;
+    opacity: 0;
 }
 input{
     font-size:18px;
@@ -51,6 +53,7 @@ input{
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0);
 }
 input:focus{
     background: #fff;
