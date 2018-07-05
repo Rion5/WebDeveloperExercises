@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="paper-full.js"></script>
+    <link rel="stylesheet" href="circles.css">
+    <script type="text/paperscript" canvas="myCanvas">
+        function onKeyDown(event){
+            new Path.Circle(new Point(100, 100), 15).fillColor = "orange";
+        }
+    </script>
+    <title>Circles</title>
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>
