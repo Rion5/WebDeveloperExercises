@@ -18,9 +18,26 @@ ul{
 }
 li{
     background-color: white;
+    height: 40px;
+    line-height: 40px;
+    color: #666;
 }
-li:nth-child(2){
+li:nth-child(2n){
     background-color: #f7f7f7;
+}
+input{
+    font-size:18px;
+    background-color: #f7f7f7;
+    width:100%;
+    padding: 13px 13px 13px 20px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+input:focus{
+    background: #fff;
+    border: 3px solid #2980b9;
+    outline: none;
 }
 #container{
     width: 360px;
