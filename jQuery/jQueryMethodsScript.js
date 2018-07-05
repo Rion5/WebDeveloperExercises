@@ -31,3 +31,12 @@ $("#greatphoto").attr("alt, "Beijing");
 
  //html()
  $("ul li:last-of-type").html("<li>Updated via jQuery.html()</li>");
+
+ //addClass()
+ $("ul").addClass("correct");
+
+ //removeClass()
+ $("ul").removeClass("correct");
+
+ //toggleClass()
+ $("li").first().toggleClass("done"); //using jQuery .first()
