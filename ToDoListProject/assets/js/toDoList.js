@@ -1,5 +1,5 @@
 //Check off specific todo by clicking on X
-$("li").click(function () {
+$("ul").on("click","li",function(){
     $(this).toggleClass("completed");
 });
 
@@ -9,4 +9,14 @@ $("span").click(function(event){
         $(this).remove();
     });
     event.stopPropagation(); //this will stop the event from bubbling up to parent elements
+});
+
+$("input[type='text']").keypress(function(event){
+    //if user presses Enter, get input
+    if(event.which===13){
+        var inputText = ($(this).val());
+        $(this).val("");
+        //create a new li and add to ul
+        $("ul").append("<li><span>X</span> "+inputText+"</li>");
+    }
 });
