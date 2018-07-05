@@ -5,24 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="paper-full.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.13/howler.js"></script>
     <link rel="stylesheet" href="circles.css">
     <script type="text/paperscript" canvas="myCanvas">
+        var sound = new Howl({
+            src: ['sounds/bubbles.mp3']
+          });
+        
+        var keyData = {
+            a:{
+                color: "purple",
+                sound: new Howl({
+                    src: ['sounds/bubbles.mp3']
+                })
+            },
+            s:{
+                color: "green",
+                sound: new Howl({
+                    src: ['sounds/clay.mp3']
+                })
+            },
+            d:{
+                color: "yellow",
+                sound: new Howl({
+                    src: ['sounds/confetti.mp3']
+                })
+            }
+        }
+
         var circles = [];
         //Each onKeyDown will generate a circle at a random location and push it into the array
         function onKeyDown(event) {
-            var maxPoint = new Point(view.size.width, view.size.height);
-            var randomPoint = Point.random();
-            var point = maxPoint * randomPoint; 
-            var newCircle = new Path.Circle(point, 250)
-            newCircle.fillColor = "orange";
-            circles.push(newCircle);
+            if(keyData[event.key]){
+                var maxPoint = new Point(view.size.width, view.size.height);
+                var randomPoint = Point.random();
+                var point = maxPoint * randomPoint; 
+                var newCircle = new Path.Circle(point, 250)
+                newCircle.fillColor = keyData[event.key].color;
+                keyData[event.key].sound.play();
+                circles.push(newCircle);
+            }
         }
 
         //Every frame, loop through all circles, change the hue, and shrink the circle
         function onFrame(event){
             for(var i = 0; i < circles.length; i++){
-                circles[i].fillColor.hue += 5;
+                circles[i].fillColor.hue += 3;
                 circles[i].scale(.9);
+                if(circles[i].area < 1){
+                    circles[i].remove();    //remove the circle from the canvas
+                    circles.splice(i, 1);   //remove circle from array
+                    i--; // decrement i so that the lop doesn't skip a circle because of a .splice()
+                }
             }   
         }
     </script>
