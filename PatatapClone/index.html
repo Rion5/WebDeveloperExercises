@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="circles.css">
     <script type="text/paperscript" canvas="myCanvas">
         function onKeyDown(event){
-            new Path.Circle(new Point(100, 100), 15).fillColor = "orange";
+            var maxPoint = new Point(view.size.width, view.size.height);
+            var randomPoint = Point.random();
+            var point = maxPoint * randomPoint;
+            new Path.Circle(point, 10).fillColor = "orange";
         }
     </script>
     <title>Circles</title>
