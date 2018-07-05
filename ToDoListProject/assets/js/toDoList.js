@@ -4,7 +4,7 @@ $("ul").on("click","li",function(){
 });
 
 //Click on the X to delete task
-$("span").click(function(event){
+$("ul").on("click","span",function(event){
     $(this).parent().fadeOut(1000,function(){
         $(this).remove();
     });
