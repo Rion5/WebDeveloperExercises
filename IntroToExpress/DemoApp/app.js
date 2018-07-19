@@ -3,8 +3,8 @@ var express = require("express");
 //Execute and save into variable called 'app'
 var app = express();
 
-//"route-path" => "Response"
-// "/" => "Hello"
+// "Route" => "Response"
+// "/"  => "Hello"
 app.get("/", function(req, res){
     res.send("Hello");
 });
@@ -19,6 +19,11 @@ app.get("/contact", function(req, res){
     res.send("Contact Page");
 });
 
+//* Route Matcher
+//This will run anytime there is a get request to a URL that isn't defined. (!= /, /bye, /contact)
+app.get("*", function(req, res){
+    res.send("* Route Matcher");
+});
 
 //Tell Express to listen for requests (start server)
 //Note: process.env.PORT to use in c9
