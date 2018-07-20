@@ -1,6 +1,7 @@
 var express = require("express");
 var app = express();
-
+//This will tell Express to serve the contents of the public directory
+app.use(express.static("public"));
 //Home
 app.get("/",function(req,res){
     res.render("home.ejs");
