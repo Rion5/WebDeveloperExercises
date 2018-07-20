@@ -1,2 +1,10 @@
-<h1>You love <%= thingInput %> </h1>
+<h1>You love <%= thingInput.toUpperCase() %> </h1>
+<% if(thingInput.toLowerCase() === "dogs"){ %>
+    <p>Me Too!</p>
+
+<% } else { %>
+    <p>Good Choice!</p>
+<% } %>
+
+
 <p>Message from the love.ejs file</p>
