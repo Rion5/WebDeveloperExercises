@@ -2,6 +2,8 @@ var express = require("express");
 var app = express();
 //This will tell Express to serve the contents of the public directory
 app.use(express.static("public"));
+//Now by default res.render will expect an ejs file and we can leave the .ejs tag off
+app.set("view engine", "ejs"); 
 //Home
 app.get("/",function(req,res){
     res.render("home.ejs");
