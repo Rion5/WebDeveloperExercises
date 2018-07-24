@@ -9,3 +9,8 @@ Each Campground has:
 
 * Name 
 * Image
+
+## Objectives - 2
+
+* Create the header and footer partials
+* Add in Bootstrap
