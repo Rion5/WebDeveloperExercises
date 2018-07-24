@@ -2,7 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var request = require("request");
 var app = express();
-
+app.set("view engine","ejs");
 //Home
 app.get("/",function(req,res){
     res.send("Home Page");
@@ -15,8 +15,9 @@ app.get("/results",function(req,res){
     //4th - Res.send desired result
     request("http://www.omdbapi.com/?s=star&apikey=thewdb",function(error,response,body){
         if(!error && response.statusCode == 200){
-            var results = JSON.parse(body);
-            res.send(results["Search"][0]["Title"]);
+            var parsedData = JSON.parse(body);
+            //res.send(results["Search"][0]["Title"]);
+            res.render("results", {data: parsedData}); //app.render(view, {nameOfVariable: value})
         }
     });
 });
