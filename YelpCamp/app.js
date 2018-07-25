@@ -11,8 +11,8 @@ app.get("/",function(req,res){
 });
 //GET: Campgrounds Page - Show campgrounds
 var campgrounds = [
-    {name: "Campground 1", image: "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_960_720.jpg"},
-    {name: "Campground 2", image: "https://cdn.pixabay.com/photo/2016/11/22/23/08/adventure-1851092_960_720.jpg"},
+    {name: "Campground 1", image: "https://cdn.pixabay.com/photo/2017/05/05/16/06/teepees-2287571_960_720.jpg"},
+    {name: "Campground 2", image: "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_960_720.jpg"},
     {name: "Campground 3", image: "https://farm2.staticflickr.com/1424/1430198323_c26451b047_b.jpg"}
 ];
 app.get("/campgrounds", function(req,res){
