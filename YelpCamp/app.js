@@ -1,23 +1,53 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var app = express();
+var express     = require("express"),
+    bodyParser  = require("body-parser"),
+    mongoose    = require("mongoose");
+var app         = express();
 
+mongoose.connect("mongodb://localhost/yelpCamp");
 app.use(bodyParser.urlencoded({extended: true})); 
 app.set("view engine", "ejs"); //Allows up to leave out .ejs at the end of res.render pageName.ejs
+
+// SCHEMA Setup
+var campgroundSchema = new mongoose.Schema({
+    name: String,
+    image: String
+});
+
+//Compile into a model
+var Campground = mongoose.model("Campground", campgroundSchema);
+
+// Campground.create({
+//     name: "Campground 1", 
+//     image: "https://cdn.pixabay.com/photo/2017/05/05/16/06/teepees-2287571_960_720.jpg"
+// }, function(err, campground){
+//     if(err){
+//         console.log(err);
+//     } else{
+//         console.log("Created new campground: ");
+//         console.log(campground);
+//     }
+// });
 
 //Home Page
 app.get("/",function(req,res){
     res.render("home.ejs");
 });
 //GET: Campgrounds Page - Show campgrounds
-var campgrounds = [
-    {name: "Campground 1", image: "https://cdn.pixabay.com/photo/2017/05/05/16/06/teepees-2287571_960_720.jpg"},
-    {name: "Campground 2", image: "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_960_720.jpg"},
-    {name: "Campground 3", image: "https://farm2.staticflickr.com/1424/1430198323_c26451b047_b.jpg"}
-];
+// var campgrounds = [
+//     {name: "Campground 1", image: "https://cdn.pixabay.com/photo/2017/05/05/16/06/teepees-2287571_960_720.jpg"},
+//     {name: "Campground 2", image: "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_960_720.jpg"},
+//     {name: "Campground 3", image: "https://farm2.staticflickr.com/1424/1430198323_c26451b047_b.jpg"}
+// ];
 app.get("/campgrounds", function(req,res){
-    
-    res.render("campgrounds.ejs", {campgrounds: campgrounds}); //{name: data} name can be anything, data must be campGrounds
+    //Get all campgrounds from DB
+    Campground.find({}, function(err, allCampgrounds){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("campgrounds", {campgrounds:allCampgrounds})
+        }
+    })
+    //res.render("campgrounds.ejs", {campgrounds: campgrounds}); //{name: data} name can be anything, data must be campGrounds
 });
 //POST: Campgrounds Page - Where you can create a new campground
 app.post("/campgrounds",function(req,res){
