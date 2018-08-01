@@ -3,7 +3,7 @@ var express     = require("express"),
     mongoose    = require("mongoose");
 var app         = express();
 
-mongoose.connect("mongodb://localhost/yelpCamp");
+mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true})); 
 app.set("view engine", "ejs"); //Allows up to leave out .ejs at the end of res.render pageName.ejs
 
@@ -17,8 +17,8 @@ var campgroundSchema = new mongoose.Schema({
 var Campground = mongoose.model("Campground", campgroundSchema);
 
 // Campground.create({
-//     name: "Campground 1", 
-//     image: "https://cdn.pixabay.com/photo/2017/05/05/16/06/teepees-2287571_960_720.jpg"
+//     name: "Campground 2", 
+//     image: "https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
 // }, function(err, campground){
 //     if(err){
 //         console.log(err);
@@ -28,35 +28,40 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 //     }
 // });
 
+// Campground.remove({},function(err){
+//     console.log("Collection Removed");
+// });
+///////////////////////////////////////////////////////////////
+
 //Home Page
 app.get("/",function(req,res){
     res.render("home.ejs");
 });
 //GET: Campgrounds Page - Show campgrounds
-// var campgrounds = [
-//     {name: "Campground 1", image: "https://cdn.pixabay.com/photo/2017/05/05/16/06/teepees-2287571_960_720.jpg"},
-//     {name: "Campground 2", image: "https://cdn.pixabay.com/photo/2016/02/18/22/16/tent-1208201_960_720.jpg"},
-//     {name: "Campground 3", image: "https://farm2.staticflickr.com/1424/1430198323_c26451b047_b.jpg"}
-// ];
 app.get("/campgrounds", function(req,res){
     //Get all campgrounds from DB
     Campground.find({}, function(err, allCampgrounds){
         if(err){
             console.log(err);
         } else{
-            res.render("campgrounds", {campgrounds:allCampgrounds})
+            res.render("campgrounds", {campgrounds:allCampgrounds}); //{name: data} name can be anything, data must be allCampgrounds
         }
-    })
-    //res.render("campgrounds.ejs", {campgrounds: campgrounds}); //{name: data} name can be anything, data must be campGrounds
+    });
 });
 //POST: Campgrounds Page - Where you can create a new campground
 app.post("/campgrounds",function(req,res){
     // Get data from form and add to campgrounds array
-    var name = req.body.name;       // name = the name of the Name TextBox
-    var image = req.body.image;     // image = the name of the Image TextBox
-    var newCampground = {name: name, image: image};
-    campgrounds.push(newCampground);
-    res.redirect("/campgrounds");   // Redirect back to campgrounds page as a GET request
+    var name = req.body.name;  
+    var image = req.body.image;    
+    var newCampground = {name: name, image: image}; //{name: data}
+    // Create a new campground and save to DB
+    Campground.create(newCampground, function(err, newlyCreated){
+        if(err){
+            console.log(err);
+        } else{
+            res.redirect("/campgrounds");   // Redirect back to campgrounds page as a GET request
+        }
+    });
    
 });
 //GET: Campgrounds/New Page - Shows form that will send data to POST route
