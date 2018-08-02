@@ -10,15 +10,18 @@ app.set("view engine", "ejs"); //Allows up to leave out .ejs at the end of res.r
 // SCHEMA Setup
 var campgroundSchema = new mongoose.Schema({
     name: String,
-    image: String
+    image: String,
+    description: String
 });
 
 //Compile into a model
 var Campground = mongoose.model("Campground", campgroundSchema);
 
+//Create new campground
 // Campground.create({
-//     name: "Campground 2", 
-//     image: "https://images.pexels.com/photos/699558/pexels-photo-699558.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+//     name: "Campground 1", 
+//     image: "https://images.pexels.com/photos/939723/pexels-photo-939723.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260https://images.pexels.com/photos/939723/pexels-photo-939723.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+//     description: "Test Campground"
 // }, function(err, campground){
 //     if(err){
 //         console.log(err);
@@ -37,7 +40,7 @@ var Campground = mongoose.model("Campground", campgroundSchema);
 app.get("/",function(req,res){
     res.render("home.ejs");
 });
-//GET: Campgrounds Page - Show campgrounds
+//GET: Campgrounds Page - (INDEX) campgrounds
 app.get("/campgrounds", function(req,res){
     //Get all campgrounds from DB
     Campground.find({}, function(err, allCampgrounds){
@@ -48,7 +51,7 @@ app.get("/campgrounds", function(req,res){
         }
     });
 });
-//POST: Campgrounds Page - Where you can create a new campground
+//POST: Campgrounds Page (CREATE) - Where you can create a new campground
 app.post("/campgrounds",function(req,res){
     // Get data from form and add to campgrounds array
     var name = req.body.name;  
@@ -64,10 +67,17 @@ app.post("/campgrounds",function(req,res){
     });
    
 });
-//GET: Campgrounds/New Page - Shows form that will send data to POST route
+//GET: Campgrounds/New Page (NEW) - Shows form that will send data to POST route
 app.get("/campgrounds/new", function(req,res){
     res.render("new.ejs");
 });
+
+//GET: Single Campgrounds Page (SHOW) - Render will show more info about one campground
+//Note: Must be placed at bottom, otherwise campgrounds/[...] will trigger this page.
+app.get("/campgrounds/:id",function(req,res){
+    res.render("show");
+});
+
 //Error Page
 //Note: Must be placed at the bottom otherwise all links after /[...] will trigger an error
 app.get("/*",function(req,res){
