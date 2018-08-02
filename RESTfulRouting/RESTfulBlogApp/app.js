@@ -27,8 +27,18 @@ var Blog = mongoose.model("Blog",blogSchema);
 // });
 
 //RESTful Routes
+app.get("/",function(req,res){
+    res.redirect("/blogs");
+});
+
+//GET - (INDEX)
 app.get("/blogs",function(req,res){
     res.render("index.ejs");
+});
+
+//Error Page
+app.get("/*",function(req,res){
+    res.send("Error loading the page");
 });
 
 //Start Server
