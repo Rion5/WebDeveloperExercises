@@ -45,7 +45,7 @@ Each Campground has:
 * Use db.collection.drop()
 * Add a show route/template
 
-RESTFUL ROUTES Example
+## RESTful Routes Example
 
 |name        |url           |verb          |description   |
 |------------|:-------------|:------------:|:-------------|
