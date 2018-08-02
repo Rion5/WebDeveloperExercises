@@ -55,8 +55,9 @@ app.get("/campgrounds", function(req,res){
 app.post("/campgrounds",function(req,res){
     // Get data from form and add to campgrounds array
     var name = req.body.name;  
-    var image = req.body.image;    
-    var newCampground = {name: name, image: image}; //{name: data}
+    var image = req.body.image;
+    var desc = req.body.description;   
+    var newCampground = {name: name, image: image, description: desc}; //{name: data}
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
@@ -75,7 +76,13 @@ app.get("/campgrounds/new", function(req,res){
 //GET: Single Campgrounds Page (SHOW) - Render will show more info about one campground
 //Note: Must be placed at bottom, otherwise campgrounds/[...] will trigger this page.
 app.get("/campgrounds/:id",function(req,res){
-    res.render("show");
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("show", {campground: foundCampground});
+        }
+    });
 });
 
 //Error Page
