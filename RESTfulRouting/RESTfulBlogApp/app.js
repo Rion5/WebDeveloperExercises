@@ -33,7 +33,13 @@ app.get("/",function(req,res){
 
 //GET - (INDEX)
 app.get("/blogs",function(req,res){
-    res.render("index.ejs");
+    Blog.find({},function(err,blogs){
+        if(err){
+            console.log("Error loading blogs!");
+        } else{
+            res.render("index.ejs", {blogs: blogs}); //{name: data} Passing in  a variable named blogs, which is pulled from Blog.find[...]
+        }
+    });
 });
 
 //Error Page
