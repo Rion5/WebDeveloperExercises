@@ -47,7 +47,7 @@ app.get("/campgrounds", function(req,res){
         if(err){
             console.log(err);
         } else{
-            res.render("campgrounds", {campgrounds:allCampgrounds}); //{name: data} name can be anything, data must be allCampgrounds
+            res.render("index.ejs", {campgrounds:allCampgrounds}); //{name: data} name can be anything, data must be allCampgrounds
         }
     });
 });

@@ -40,7 +40,7 @@ Each Campground has:
 
 ## 7) Show Page
 
-* Review the RESTful routes
+* Review the RESTFUL routes
 * Add description to campground model
 * Use db.collection.drop()
 * Add a show route/template
