@@ -27,3 +27,10 @@ A RESTful route is a route that provides mapping between HTTP verbs (get, post, 
 * Add Header and Footer Partials
 * Include Semantic UI
 * Add Simple Nav
+
+## Putting the C in CRUD
+
+* Add NEW route
+* Add NEW template
+* Add CREATE route
+* Add CREATE template
