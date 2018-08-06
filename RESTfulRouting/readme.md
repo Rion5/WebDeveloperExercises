@@ -19,7 +19,7 @@ A RESTful route is a route that provides mapping between HTTP verbs (get, post, 
 |CREATE      |/campgrounds          |POST       |Add new campground to DB|
 |SHOW        |/campgrounds/:id      |GET        |Shows info about one campground|
 |EDIT        |/campgrounds/:id/edit |GET        |Shows edit form for one campground|
-|UPDATE      |/campgrounds/:id       |PUT        |Update a particular campground, then redirect somewhere|
+|UPDATE      |/campgrounds/:id      |PUT        |Update a particular campground, then redirect somewhere|
 |DESTROY     |/campgrounds/:id      |DELETE     |Delete a particular campground, then redirect somewhere|  
 
 ## Basic Layout
