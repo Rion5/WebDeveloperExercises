@@ -31,7 +31,7 @@ app.get("/",function(req,res){
     res.redirect("/blogs");
 });
 
-//GET - (INDEX)
+//GET - INDEX Route
 app.get("/blogs",function(req,res){
     Blog.find({},function(err,blogs){
         if(err){
@@ -40,6 +40,10 @@ app.get("/blogs",function(req,res){
             res.render("index.ejs", {blogs: blogs}); //{name: data} Passing in  a variable named blogs, which is pulled from Blog.find[...]
         }
     });
+});
+//GET - NEW Route
+app.get("/blogs/new",function(req,res){
+    res.render("new.ejs");
 });
 
 //Error Page
