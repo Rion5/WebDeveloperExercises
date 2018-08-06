@@ -32,18 +32,32 @@ app.get("/",function(req,res){
 });
 
 //GET - INDEX Route
+//Display a list of all blogs
 app.get("/blogs",function(req,res){
     Blog.find({},function(err,blogs){
         if(err){
             console.log("Error loading blogs!");
         } else{
-            res.render("index.ejs", {blogs: blogs}); //{name: data} Passing in  a variable named blogs, which is pulled from Blog.find[...]
+            res.render("index.ejs", {blogs: blogs}); //{name: data} Passing in a variable named blogs, which is pulled from Blog.find[...]
         }
     });
 });
 //GET - NEW Route
+//Displays form to make a new blog
 app.get("/blogs/new",function(req,res){
     res.render("new.ejs");
+});
+//POST - CREATE Route
+//Add new Blog to DB
+app.post("/blogs",function(req,res){
+    Blog.create(req.body.blog, function(err, newBlog){
+        if(err){
+            console.log("Error creating new blog post");
+            res.render("new.ejs");
+        } else {
+            res.redirect("/blogs");
+        }
+    });
 });
 
 //Error Page
