@@ -69,7 +69,16 @@ app.get("/blogs/:id", function(req,res){
             res.render("show.ejs", {blog: foundBlog});
         }
     });
-    
+});
+//GET - EDIT Route
+app.get("/blogs/:id/edit",function(req,res){
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            res.redirect("/blogs");
+        } else{
+            res.render("edit.ejs", {blog: foundBlog});
+        }
+    });
 });
 //Error Page
 app.get("/*",function(req,res){
