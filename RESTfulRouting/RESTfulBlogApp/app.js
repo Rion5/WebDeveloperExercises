@@ -59,7 +59,10 @@ app.post("/blogs",function(req,res){
         }
     });
 });
-
+//GET - SHOW Route
+app.get("/blogs/:id", function(req,res){
+    res.render("show.ejs");
+});
 //Error Page
 app.get("/*",function(req,res){
     res.send("Error loading the page");
