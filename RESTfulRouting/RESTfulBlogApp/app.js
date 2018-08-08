@@ -61,7 +61,15 @@ app.post("/blogs",function(req,res){
 });
 //GET - SHOW Route
 app.get("/blogs/:id", function(req,res){
-    res.render("show.ejs");
+    //Blog.findById(id, callback) //Mongoose Code to find the DB
+    Blog.findById(req.params.id, function(err, foundBlog){
+        if(err){
+            res.redirect("/blogs");
+        } else {
+            res.render("show.ejs", {blog: foundBlog});
+        }
+    });
+    
 });
 //Error Page
 app.get("/*",function(req,res){
