@@ -54,3 +54,8 @@ A RESTful route is a route that provides mapping between HTTP verbs (get, post, 
 
 * Add a DESTROY
 * Add Edit and Destroy Links
+
+## Final Updates
+
+* Sanitize blog body
+* Style Index
