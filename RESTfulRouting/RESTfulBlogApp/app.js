@@ -95,7 +95,14 @@ app.put("/blogs/:id",function(req,res){
 });
 //DELETE - DESTROY Route
 app.delete("/blogs/:id", function(req, res){
-    res.send("DESTROY Route");
+    Blog.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            console.log("Error deleting blog");
+            res.redirect("/blogs");
+        } else{
+            res.redirect("/blogs");
+        }
+    });
 });
 //Error Page
 app.get("/*",function(req,res){
