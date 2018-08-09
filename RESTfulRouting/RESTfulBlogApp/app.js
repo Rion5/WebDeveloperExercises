@@ -93,6 +93,10 @@ app.put("/blogs/:id",function(req,res){
         }
     });
 });
+//DELETE - DESTROY Route
+app.delete("/blogs/:id", function(req, res){
+    res.send("DESTROY Route");
+});
 //Error Page
 app.get("/*",function(req,res){
     res.send("Error loading the page");
