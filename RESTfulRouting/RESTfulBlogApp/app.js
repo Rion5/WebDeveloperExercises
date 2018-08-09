@@ -2,12 +2,14 @@ var express         = require("express"),
     mongoose        = require("mongoose"),
     bodyParser      = require("body-parser"),
     methodOverride  = require("method-override"),
+    expressSanitizer = require("express-sanitizer"),
     app             = express();
 mongoose.connect("mongodb://localhost:27017/restful_blog_app", {useNewUrlParser: true});
 
 app.set("view engine", "ejs");
-app.use(express.static("public")); // Use the following code to serve images, CSS files, and JavaScript files in a directory named public
+app.use(express.static("public"));  // Use the following code to serve images, CSS files, and JavaScript files in a directory named public
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressSanitizer());        // NOTE: Must place expressSanitizer AFTER bodyParser
 app.use(methodOverride("_method"));
 //MongoDB Schema
 var blogSchema = new mongoose.Schema({
