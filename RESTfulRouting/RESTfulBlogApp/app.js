@@ -53,6 +53,7 @@ app.get("/blogs/new",function(req,res){
 //POST - CREATE Route
 //Add new Blog to DB
 app.post("/blogs",function(req,res){
+    req.body.blog.body = req.sanitize(req.body.blog.body); //Sanitize the body to not allow <script> tags
     Blog.create(req.body.blog, function(err, newBlog){
         if(err){
             console.log("Error creating new blog post");
@@ -85,8 +86,8 @@ app.get("/blogs/:id/edit",function(req,res){
 });
 //PUT - UPDATE Route
 app.put("/blogs/:id",function(req,res){
-    res.send("update route");
-    //Blog.findByIdAndUpdate(id, newData, callback){} //Mongoose Code to find and update
+    req.body.blog.body = req.sanitize(req.body.blog.body);  //Sanitize the body to not allow <script> tags
+    //Blog.findByIdAndUpdate(id, newData, callback){}       //Mongoose Code to find and update
     Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
         if(err){
             res.redirect("/blogs");
