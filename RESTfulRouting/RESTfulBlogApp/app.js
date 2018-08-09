@@ -1,13 +1,14 @@
-var express     = require("express"),
-    mongoose    = require("mongoose"),
-    bodyParser  = require("body-parser"),
-    app         = express();
+var express         = require("express"),
+    mongoose        = require("mongoose"),
+    bodyParser      = require("body-parser"),
+    methodOverride  = require("method-override"),
+    app             = express();
 mongoose.connect("mongodb://localhost:27017/restful_blog_app", {useNewUrlParser: true});
 
 app.set("view engine", "ejs");
 app.use(express.static("public")); // Use the following code to serve images, CSS files, and JavaScript files in a directory named public
 app.use(bodyParser.urlencoded({extended: true}));
-
+app.use(methodOverride("_method"));
 //MongoDB Schema
 var blogSchema = new mongoose.Schema({
     title: String,
@@ -80,6 +81,10 @@ app.get("/blogs/:id/edit",function(req,res){
         }
     });
 });
+//PUT - UPDATE Route
+app.put("/blogs/:id",function(req,res){
+    res.send("update route");
+})
 //Error Page
 app.get("/*",function(req,res){
     res.send("Error loading the page");
