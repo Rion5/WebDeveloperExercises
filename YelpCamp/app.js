@@ -3,6 +3,7 @@ var express     = require("express"),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose"),
     Campground  = require("./models/campground"),
+    Comment     = require("./models/comment"),
     seedDB      = require("./seeds");
     
 seedDB();
@@ -25,7 +26,7 @@ app.get("/campgrounds", function(req,res){
         }
     });
 });
-//POST: Campgrounds Page (CREATE) - Where you can create a new campground
+//POST: Campgrounds Page (CREATE) - Where you can create a new campground ...
 app.post("/campgrounds",function(req,res){
     // Get data from form and add to campgrounds array
     var name = req.body.name;  
@@ -62,10 +63,40 @@ app.get("/campgrounds/:id",function(req,res){
 // ======================
 // Comments Routes
 // ======================
+//GET: Comments (NEW route) - Shows form that will send data to POST route
 app.get("/campgrounds/:id/comments/new", function(req,res){
-    res.render("comments/new.ejs");
+    // Find Campground by id
+    Campground.findById(req.params.id, function(err, campground){
+        if(err){
+            console.log(err);
+        } else{
+            res.render("comments/new.ejs", {campground: campground});
+        }
+    });
 });
-
+//POST: Comments (CREATE route) - Add new comment to DB
+app.post("/campgrounds/:id/comments", function(req, res){
+    //Lookup campground using ID
+    Campground.findById(req.params.id, function(err, campground){
+        if(err){
+            console.log(err);
+            res.redirect("/campgrounds");
+        } else{
+            //Create a new comment
+            Comment.create(req.body.comment, function(err, comment){
+                if(err){
+                    console.log(err);
+                } else{
+                    //Connect a new comment to campground
+                    campground.comments.push(comment);
+                    campground.save();
+                    //Redirect campground show page
+                    res.redirect("/campgrounds/"+campground._id);
+                }
+            });
+        }
+    });   
+});
 
 
 //Error Page
