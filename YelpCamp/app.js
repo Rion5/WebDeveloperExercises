@@ -2,8 +2,10 @@ var express     = require("express"),
     app         = express(),
     bodyParser  = require("body-parser"),
     mongoose    = require("mongoose"),
-    Campground  = require("./models/campground");
+    Campground  = require("./models/campground"),
+    seedDB      = require("./seeds");
     
+seedDB();
 mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true})); 
 app.set("view engine", "ejs"); //Allows up to leave out .ejs at the end of res.render pageName.ejs
@@ -79,7 +81,7 @@ app.get("/campgrounds/:id",function(req,res){
 //Error Page
 //Note: Must be placed at the bottom otherwise all links after /[...] will trigger an error
 app.get("/*",function(req,res){
-    res.send("Error: Response Failed.")
+    res.send("Error: Response Failed.");
 });
 ///Start Listen
 app.listen(5500,function(){
