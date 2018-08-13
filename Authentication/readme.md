@@ -15,3 +15,8 @@
 * Install needed packages
 * Add root route and template
 * Add secret route and template
+
+## Auth Demo pt. 2
+
+* Create User Model
+* Configure passport
