@@ -21,7 +21,7 @@ app.get("/campgrounds", function(req,res){
         if(err){
             console.log(err);
         } else{
-            res.render("index.ejs", {campgrounds:allCampgrounds}); //{name: data} name can be anything, data must be allCampgrounds
+            res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds}); //{name: data} name can be anything, data must be allCampgrounds
         }
     });
 });
@@ -44,7 +44,7 @@ app.post("/campgrounds",function(req,res){
 
 //GET: Campgrounds/New Page (NEW) - Shows form that will send data to POST route
 app.get("/campgrounds/new", function(req,res){
-    res.render("new.ejs");
+    res.render("campgrounds/new.ejs");
 });
 
 //GET: Single Campgrounds Page (SHOW) - Render will show more info about one campground
@@ -55,10 +55,18 @@ app.get("/campgrounds/:id",function(req,res){
             console.log(err);
         } else{
             console.log(foundCampground);
-            res.render("show", {campground: foundCampground});
+            res.render("campgrounds/show", {campground: foundCampground});
         }
     });
 });
+// ======================
+// Comments Routes
+// ======================
+app.get("/campgrounds/:id/comments/new", function(req,res){
+    res.render("comments/new.ejs");
+});
+
+
 
 //Error Page
 //Note: Must be placed at the bottom otherwise all links after /[...] will trigger an error
