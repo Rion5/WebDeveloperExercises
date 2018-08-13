@@ -6,11 +6,11 @@ var express     = require("express"),
     Comment     = require("./models/comment"),
     seedDB      = require("./seeds");
     
-seedDB();
 mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true})); 
-app.set("view engine", "ejs"); //Allows us to leave out .ejs at the end of res.render pageName.ejs
-
+app.set("view engine", "ejs");                  //Allows us to leave out .ejs at the end of res.render pageName.ejs
+app.use(express.static(__dirname+ "/public"));  //__dirname refers to the directory that this script was running
+seedDB();
 //Home Page
 app.get("/",function(req,res){
     res.render("home.ejs");

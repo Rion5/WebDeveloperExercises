@@ -1,0 +1,10 @@
+body{
+    background: #EAE6DA;
+    /* #F0EDE5 - Coconut Milk */
+}
+.thumbnail img{
+    width: 100%;
+}
+.thumbnail{
+    padding: 0;
+}
