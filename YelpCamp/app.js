@@ -8,26 +8,7 @@ var express     = require("express"),
 seedDB();
 mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true})); 
-app.set("view engine", "ejs"); //Allows up to leave out .ejs at the end of res.render pageName.ejs
-
-//Create new campground
-// Campground.create({
-//     name: "Campground 1", 
-//     image: "https://images.pexels.com/photos/939723/pexels-photo-939723.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260https://images.pexels.com/photos/939723/pexels-photo-939723.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-//     description: "Test Campground"
-// }, function(err, campground){
-//     if(err){
-//         console.log(err);
-//     } else{
-//         console.log("Created new campground: ");
-//         console.log(campground);
-//     }
-// });
-
-// Campground.remove({},function(err){
-//     console.log("Collection Removed");
-// });
-///////////////////////////////////////////////////////////////
+app.set("view engine", "ejs"); //Allows us to leave out .ejs at the end of res.render pageName.ejs
 
 //Home Page
 app.get("/",function(req,res){
@@ -69,10 +50,11 @@ app.get("/campgrounds/new", function(req,res){
 //GET: Single Campgrounds Page (SHOW) - Render will show more info about one campground
 //Note: Must be placed at bottom, otherwise campgrounds/[...] will trigger this page.
 app.get("/campgrounds/:id",function(req,res){
-    Campground.findById(req.params.id, function(err, foundCampground){
+    Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
         if(err){
             console.log(err);
         } else{
+            console.log(foundCampground);
             res.render("show", {campground: foundCampground});
         }
     });
