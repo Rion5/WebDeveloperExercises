@@ -62,3 +62,13 @@ Each Campground has:
 * Create a models directory
 * Use model.exports
 * Require everything correctly
+
+## 9) Add Seeds File
+
+* Add a seeds.js file
+* Run the seeds file every time the server starts
+
+## 10) Add the Comment model
+
+* Fix errors
+* Display comments on campground SHOW page
