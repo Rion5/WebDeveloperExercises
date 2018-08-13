@@ -9,6 +9,13 @@ app.set("view engine", "ejs");
 app.get("/", function(req,res){
     res.render("home.ejs");
 });
+//Secret Page
+app.get("/secret", function(req,res){
+    res.render("secret");
+});
+
+
+
 //Error Page
 app.get("/*", function(req,res){
     res.send("Error: Could not load page");
