@@ -79,3 +79,8 @@ Each Campground has:
   * ie: campgrounds/:id/comments/new
 * Add the NEW and CREATE routes
 * Add the new comment form
+
+## 12) Style Show Page
+
+* Add sidebar to show page
+* Display comments nicely
