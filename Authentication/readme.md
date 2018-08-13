@@ -20,3 +20,8 @@
 
 * Create User Model
 * Configure passport
+
+## Auth Demo pt. 3
+
+* Add Register route (RESTful: NEW)
+* Add Register form  (RESTful: CREATE)
