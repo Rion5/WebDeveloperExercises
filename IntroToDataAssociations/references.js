@@ -7,23 +7,8 @@ mongoose.connect("mongodb://localhost:27017/blog_demo2", {useNewUrlParser: true}
  * 3) Create New Model Object
  * 4) Save to DB
  */
-var Post = require("./model/post.js");
-
-
-//Note: Must place userSchema below Post since we are referencing [postSchema]
-// User - email, name
-var userSchema = new mongoose.Schema({
-    email: String,
-    name: String,
-    //The user schema has a posts attribute thats an array of mongoose objectId, belonging to a "Post" mongoose object. Hence why we had to place this below the 'Post' schema
-    posts: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Post"
-        }
-    ]
-});
-var User = mongoose.model("User", userSchema);
+var Post = require("./models/post.js");
+var User = require("./models/user.js"); //Note: Must place userSchema below Post since we are referencing [postSchema]
 
 //Create a new User without a post
 User.create({
