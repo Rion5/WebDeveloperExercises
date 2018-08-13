@@ -72,3 +72,10 @@ Each Campground has:
 
 * Fix errors
 * Display comments on campground SHOW page
+
+## 11) NEW & CREATE Comment Routes
+
+* Use nested routes
+  * ie: campgrounds/:id/comments/new
+* Add the NEW and CREATE routes
+* Add the new comment form
