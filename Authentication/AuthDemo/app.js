@@ -54,7 +54,15 @@ app.post("/register", function(req,res){
          }
      });
 });
+//============
+// LOGIN Routes
+//============
+//Display login form
+app.get("/login", function(req,res){
+    res.render("login");
+});
 
+//============
 //Error Page
 app.get("/*", function(req,res){
     res.send("Error: Could not load page");
