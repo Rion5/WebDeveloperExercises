@@ -22,6 +22,9 @@ app.use(passport.session());
 passport.serializeUser(User.serializeUser());       // Encoding it (serialize) and putting it back into the session
 passport.deserializeUser(User.deserializeUser());   // Taking the data thats encoded in the sessions and un encoding it (deserialize)
 
+//============
+// ROUTES
+//============
 //Home Page
 app.get("/", function(req,res){
     res.render("home.ejs");
@@ -31,7 +34,26 @@ app.get("/secret", function(req,res){
     res.render("secret");
 });
 
-
+//============
+// AUTH Routes
+//============
+//Displays form to register a new user
+app.get("/register", function(req,res){
+    res.render("register");
+});
+//Register New User to DB
+app.post("/register", function(req,res){
+     User.register(new User({username: req.body.username}), req.body.password, function(err, user){
+         if(err){
+             console.log(err);
+             return res.render("register");
+         } else{
+             passport.authenticate("local")(req,res,function(){ //"local" can be swapped out with "twitter", "google", etc...
+                res.redirect("/secret");
+             });
+         }
+     });
+});
 
 //Error Page
 app.get("/*", function(req,res){
