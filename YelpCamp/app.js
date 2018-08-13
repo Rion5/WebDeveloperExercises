@@ -1,21 +1,12 @@
 var express     = require("express"),
+    app         = express(),
     bodyParser  = require("body-parser"),
-    mongoose    = require("mongoose");
-var app         = express();
-
+    mongoose    = require("mongoose"),
+    Campground  = require("./models/campground");
+    
 mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true})); 
 app.set("view engine", "ejs"); //Allows up to leave out .ejs at the end of res.render pageName.ejs
-
-// SCHEMA Setup
-var campgroundSchema = new mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-//Compile into a model
-var Campground = mongoose.model("Campground", campgroundSchema);
 
 //Create new campground
 // Campground.create({
@@ -66,8 +57,8 @@ app.post("/campgrounds",function(req,res){
             res.redirect("/campgrounds");   // Redirect back to campgrounds page as a GET request
         }
     });
-   
 });
+
 //GET: Campgrounds/New Page (NEW) - Shows form that will send data to POST route
 app.get("/campgrounds/new", function(req,res){
     res.render("new.ejs");
