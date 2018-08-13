@@ -7,13 +7,8 @@ mongoose.connect("mongodb://localhost:27017/blog_demo2", {useNewUrlParser: true}
  * 3) Create New Model Object
  * 4) Save to DB
  */
+var Post = require("./model/post.js");
 
- //Post - title, content
-var postSchema = new mongoose.Schema({
-    title: String,
-    content: String
-});
-var Post = mongoose.model("Post", postSchema);
 
 //Note: Must place userSchema below Post since we are referencing [postSchema]
 // User - email, name
