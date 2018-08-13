@@ -25,3 +25,8 @@
 
 * Add Register route (RESTful: NEW)
 * Add Register form  (RESTful: CREATE)
+
+## Auth demo pt. 4
+
+* Add Login routes
+* Add Login routes
