@@ -84,3 +84,8 @@ Each Campground has:
 
 * Add sidebar to show page
 * Display comments nicely
+
+## 13) Finish Styling Show Page
+
+* Add public directory
+* Add custom stylesheet
