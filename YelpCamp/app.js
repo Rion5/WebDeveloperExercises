@@ -124,6 +124,23 @@ app.post("/campgrounds/:id/comments", function(req, res){
 app.get("/register", function(req, res){
     res.render("register");
 });
+//Handle Sign-Up Logic
+app.post("/register", function(req,res){
+    //Create new user object,
+    var newUser = new User({username: req.body.username});
+    //.register is from 'passport-local-mongoose'
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            return res.render("register");
+        } else{
+            passport.authenticate("local")(req,res,function(){
+                res.redirect("/campgrounds");
+            });
+        }
+    });
+});
+
 //========================
 //Error Page
 //Note: Must be placed at the bottom otherwise all links after /[...] will trigger an error
