@@ -32,7 +32,7 @@ function seedDB(){
                 console.log(err);
             }
             console.log("Removed comments!");
-             //Add a few campgrounds
+            //Add a few campgrounds
             data.forEach(function(seed){
                 Campground.create(seed, function(err, campground){
                     if(err){
@@ -43,7 +43,9 @@ function seedDB(){
                         Comment.create(
                             {
                                 text: "This place is great, but I wish there was internet",
-                                author: "Homer"
+                                author: {
+                                    username: "Homer"
+                                }
                             }, function(err, comment){
                                 if(err){
                                     console.log(err);

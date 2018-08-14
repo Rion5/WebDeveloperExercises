@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true})); 
 app.set("view engine", "ejs");                  //Allows us to leave out .ejs at the end of res.render pageName.ejs
 app.use(express.static(__dirname+ "/public"));  //__dirname refers to the directory that this script was running from
-seedDB();
+seedDB(); //Seed the DB
 
 //========================
 // PASSPORT CONFIGURATIONS
@@ -41,6 +41,7 @@ app.use(function(req,res, next){
 //========================
 // ROUTES
 //========================
+//Express Router
 app.use("/",indexRoutes);
 app.use("/campgrounds", campgroundRoutes); //appends '/campgrounds' to each request. Helps keep code DRY since we don't have to type out app.get(/campgrounds/...)
 app.use("/campgrounds/:id/comments",commentRoutes);
