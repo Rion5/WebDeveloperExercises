@@ -113,3 +113,7 @@ Each Campground has:
 * Add links to navbar
 * Show/hide auth links correctly
   * ie - Only show logout link, if user is signed in
+
+## 18) Show/Hide Links
+
+* Show/hide authentication links in navbar
