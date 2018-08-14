@@ -31,7 +31,8 @@ app.get("/", function(req,res){
     res.render("home.ejs");
 });
 //Secret Page
-app.get("/secret", function(req,res){
+//Notes on middleware: When a get request is made to /secret, run the isLoggedIn function, then run the callback
+app.get("/secret", isLoggedIn,function(req,res){
     res.render("secret");
 });
 
@@ -72,6 +73,17 @@ app.post("/login", passport.authenticate("local", {
 }), function(req, res){
     
 });
+app.get("/logout", function(req,res){
+    req.logout();
+    res.redirect("/");
+});
+function isLoggedIn(req, res, next){
+    //If request is authenticated (method from passport), return next, Otherwise go back to login form
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 //============
 //Error Page
 app.get("/*", function(req,res){
