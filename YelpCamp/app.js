@@ -8,12 +8,29 @@ var express         = require("express"),
     Comment         = require("./models/comment"),
     User            = require("./models/user"),
     seedDB          = require("./seeds");
-    Comment.
+
 mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended: true})); 
 app.set("view engine", "ejs");                  //Allows us to leave out .ejs at the end of res.render pageName.ejs
 app.use(express.static(__dirname+ "/public"));  //__dirname refers to the directory that this script was running
 seedDB();
+
+//========================
+// PASSPORT CONFIGURATIONS
+//========================
+app.use(require("express-session")({
+    secret: "Secret can be anything, this is used to compute the hash",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+//========================
+// CAMPGROUND ROUTES
+//========================
 //Home Page
 app.get("/",function(req,res){
     res.render("home.ejs");
@@ -63,9 +80,9 @@ app.get("/campgrounds/:id",function(req,res){
         }
     });
 });
-// ======================
-// Comments Routes
-// ======================
+//========================
+// COMMENT ROUTES
+//========================
 //GET: Comments (NEW route) - Shows form that will send data to POST route
 app.get("/campgrounds/:id/comments/new", function(req,res){
     // Find Campground by id
@@ -100,13 +117,20 @@ app.post("/campgrounds/:id/comments", function(req, res){
         }
     });   
 });
-
-
+//========================
+// AUTHENTICATION ROUTES
+//========================
+//Show Register Form
+app.get("/register", function(req, res){
+    res.render("register");
+});
+//========================
 //Error Page
 //Note: Must be placed at the bottom otherwise all links after /[...] will trigger an error
 app.get("/*",function(req,res){
     res.send("Error: Response Failed.");
 });
+//========================
 ///Start Listen
 app.listen(5500,function(){
     console.log("Server has Started");
