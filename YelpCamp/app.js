@@ -46,8 +46,12 @@ app.get("/campgrounds", function(req,res){
         }
     });
 });
+//GET: Campgrounds/New Page (NEW) - Shows form that will send data to POST route
+app.get("/campgrounds/new",isLoggedIn, function(req,res){
+    res.render("campgrounds/new.ejs");
+});
 //POST: Campgrounds Page (CREATE) - Where you can create a new campground ...
-app.post("/campgrounds",function(req,res){
+app.post("/campgrounds", isLoggedIn,function(req,res){
     // Get data from form and add to campgrounds array
     var name = req.body.name;  
     var image = req.body.image;
@@ -62,12 +66,6 @@ app.post("/campgrounds",function(req,res){
         }
     });
 });
-
-//GET: Campgrounds/New Page (NEW) - Shows form that will send data to POST route
-app.get("/campgrounds/new", function(req,res){
-    res.render("campgrounds/new.ejs");
-});
-
 //GET: Single Campgrounds Page (SHOW) - Render will show more info about one campground
 //Note: Must be placed at bottom, otherwise campgrounds/[...] will trigger this page.
 app.get("/campgrounds/:id",function(req,res){
@@ -84,7 +82,7 @@ app.get("/campgrounds/:id",function(req,res){
 // COMMENT ROUTES
 //========================
 //GET: Comments (NEW route) - Shows form that will send data to POST route
-app.get("/campgrounds/:id/comments/new", function(req,res){
+app.get("/campgrounds/:id/comments/new", isLoggedIn, function(req,res){
     // Find Campground by id
     Campground.findById(req.params.id, function(err, campground){
         if(err){
@@ -95,7 +93,7 @@ app.get("/campgrounds/:id/comments/new", function(req,res){
     });
 });
 //POST: Comments (CREATE route) - Add new comment to DB
-app.post("/campgrounds/:id/comments", function(req, res){
+app.post("/campgrounds/:id/comments", isLoggedIn, function(req, res){
     //Lookup campground using ID
     Campground.findById(req.params.id, function(err, campground){
         if(err){
@@ -157,6 +155,13 @@ app.get("/logout", function(req,res){
     req.logout();
     res.redirect("/campgrounds");
 });
+//Middleware: Check there is a User Logged in.
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 //========================
 //Error Page
 //Note: Must be placed at the bottom otherwise all links after /[...] will trigger an error
