@@ -121,3 +121,8 @@ Each Campground has:
 ## 19) Refactor the Routes
 
 * Use Express router to reorganize all routes
+
+## 20) Users + Comments
+
+* Associate users and comments
+* Save author's name to a comment automatically
