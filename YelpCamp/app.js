@@ -124,7 +124,14 @@ app.post("/campgrounds/:id/comments", function(req, res){
 app.get("/login", function(req, res){
     res.render("login");
 });
-
+//Handle Login Logic using passport middleware
+//app.post("/login", middleware, callback)
+app.post("/login", passport.authenticate("local", {
+    successRedirect: "/campgrounds",
+    failureRedirect: "/login"
+}), function(req,res){
+    
+});
 //Show Register Form
 app.get("/register", function(req, res){
     res.render("register");
