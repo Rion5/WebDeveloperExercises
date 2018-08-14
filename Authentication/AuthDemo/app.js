@@ -18,7 +18,7 @@ app.use(require("express-session")({
 //We need the following 2 lines below, anytime we want to use passport
 app.use(passport.initialize());
 app.use(passport.session());
-//Responsible for reading the sessions
+
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());       // Encoding it (serialize) and putting it back into the session
 passport.deserializeUser(User.deserializeUser());   // Taking the data thats encoded in the sessions and un encoding it (deserialize)
@@ -66,10 +66,10 @@ app.get("/login", function(req,res){
 //Login Logic, contains middleware
 //When we get a post request at /login, it will run the middleware code immediately.
 //passport will check the user and password from the body and check if it matches with the hashed password.
-app.post("/login", passport.authenticate("local"),{
+app.post("/login", passport.authenticate("local", {
     successRedirect: "/secret",
     failureRedirect: "/login"
-}, function(req, res){
+}), function(req, res){
     
 });
 //============
