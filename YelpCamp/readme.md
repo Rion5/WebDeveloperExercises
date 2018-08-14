@@ -106,7 +106,7 @@ Each Campground has:
 * Add login routes
 * Add login template
 
-## 17) Logout/Navbar
+## 17) Logout/Navbar (Auth pt. 4)
 
 * Add logout route
 * Prevent user from adding a comment if not signed in
@@ -114,6 +114,10 @@ Each Campground has:
 * Show/hide auth links correctly
   * ie - Only show logout link, if user is signed in
 
-## 18) Show/Hide Links
+## 18) Show/Hide Links (Auth pt. 5)
 
 * Show/hide authentication links in navbar
+
+## 19) Refactor the Routes
+
+* Use Express router to reorganize all routes
