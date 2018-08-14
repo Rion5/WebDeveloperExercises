@@ -105,3 +105,11 @@ Each Campground has:
 
 * Add login routes
 * Add login template
+
+## 17) Logout/Navbar
+
+* Add logout route
+* Prevent user from adding a comment if not signed in
+* Add links to navbar
+* Show/hide auth links correctly
+  * ie - Only show logout link, if user is signed in
