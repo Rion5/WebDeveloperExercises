@@ -100,3 +100,8 @@ Each Campground has:
 * Configure Passport
 * Add register routes
 * Add register template
+
+## 16) Login (Auth pt. 3)
+
+* Add login routes
+* Add login template
