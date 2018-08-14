@@ -152,7 +152,11 @@ app.post("/register", function(req,res){
         }
     });
 });
-
+//Logout Route
+app.get("/logout", function(req,res){
+    req.logout();
+    res.redirect("/campgrounds");
+});
 //========================
 //Error Page
 //Note: Must be placed at the bottom otherwise all links after /[...] will trigger an error
