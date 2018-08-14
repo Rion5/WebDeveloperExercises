@@ -120,6 +120,11 @@ app.post("/campgrounds/:id/comments", function(req, res){
 //========================
 // AUTHENTICATION ROUTES
 //========================
+//Show Login Form
+app.get("/login", function(req, res){
+    res.render("login");
+});
+
 //Show Register Form
 app.get("/register", function(req, res){
     res.render("register");
