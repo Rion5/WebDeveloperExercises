@@ -28,6 +28,11 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+//The middleware we add will be called on every route
+app.use(function(req,res, next){
+    res.locals.currentUser = req.user;
+    next();
+});
 //========================
 // CAMPGROUND ROUTES
 //========================
