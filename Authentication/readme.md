@@ -30,3 +30,8 @@
 
 * Add Login routes
 * Add Login routes
+
+## Auth demo pt. 5
+
+* Add Logout Route
+* Add isLoggedIn middleware
