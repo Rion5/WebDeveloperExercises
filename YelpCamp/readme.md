@@ -89,3 +89,8 @@ Each Campground has:
 
 * Add public directory
 * Add custom stylesheet
+
+## 14) Add User Model
+
+* Install all packages needed for authentication
+* Define User Model
