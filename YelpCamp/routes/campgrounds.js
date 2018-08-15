@@ -63,7 +63,7 @@ router.get("/:id/edit", function(req,res){
         }
     });
 });
-//PUT: /campgrounds/:id (Update) - Update a particular campground, then redirect back to that campground/:id page
+//PUT: /campgrounds/:id (UPDATE) - Update a particular campground, then redirect back to that /campground/:id page
 router.put("/:id", function(req,res){
     //.findByIdAndUpdate(id, update, callback)
     Campground.findByIdAndUpdate(req.params.id, req.body.campground,function(err, updatedCampground){
@@ -73,6 +73,10 @@ router.put("/:id", function(req,res){
             res.redirect("/campgrounds/"+updatedCampground._id); //req.params.id will also work for the id
         }
     });
+});
+//DELETE: /campgrounds/:id (DESTROY) - Delete a particular campground, then redirect back to /campgrounds
+router.delete("/:id", function(req,res){
+    res.send("Destroy Route");
 });
 //========================
 // MIDDLEWARE
