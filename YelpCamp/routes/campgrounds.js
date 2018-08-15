@@ -76,7 +76,13 @@ router.put("/:id", function(req,res){
 });
 //DELETE: /campgrounds/:id (DESTROY) - Delete a particular campground, then redirect back to /campgrounds
 router.delete("/:id", function(req,res){
-    res.send("Destroy Route");
+    Campground.findByIdAndRemove(req.params.id, function(err, foundCampground){
+        if(err){
+            res.redirect("/campgrounds");
+        } else{
+            res.redirect("/campgrounds");
+        }
+    });
 });
 //========================
 // MIDDLEWARE
