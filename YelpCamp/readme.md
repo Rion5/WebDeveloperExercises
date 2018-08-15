@@ -172,3 +172,9 @@ Authorization: Once you know someone is, you figure out what they are allowed an
 ## 27) Refactor Middleware
 
 * Extract Middleware code into a separate file and require that file.
+
+## 28) Adding in Flash Messages
+
+* Demo working version
+* Install and configure connect-flash
+* Add bootstrap alerts to header
