@@ -6,7 +6,7 @@ var Campground  = require("../models/campground");
 //========================
 // CAMPGROUND ROUTES - '/campgrounds'
 //========================
-//GET: Campgrounds Page - (INDEX) campgrounds
+//GET: /campgrounds (INDEX) - Display a list of all campgrounds
 router.get("/", function(req,res){
     //Get all campgrounds from DB
     Campground.find({}, function(err, allCampgrounds){
@@ -17,11 +17,11 @@ router.get("/", function(req,res){
         }
     });
 });
-//GET: Campgrounds/New Page (NEW) - Shows form that will send data to POST route
+//GET: /campgrounds/new (NEW) - Displays form to make a new campground
 router.get("/new",isLoggedIn, function(req,res){
     res.render("campgrounds/new.ejs");
 });
-//POST: Campgrounds Page (CREATE) - Where you can create a new campground ...
+//POST: /campgrounds (CREATE) - Add new campground to DB
 router.post("/", isLoggedIn,function(req,res){
     // Get data from form and add to campgrounds array
     var name = req.body.name;  
@@ -41,7 +41,7 @@ router.post("/", isLoggedIn,function(req,res){
         }
     });
 });
-//GET: Single Campgrounds Page (SHOW) - Render will show more info about one campground
+//GET: /campgrounds/:id (SHOW) - Shows info about one campground
 //Note: Must be placed at bottom, otherwise campgrounds/[...] will trigger this page.
 router.get("/:id",function(req,res){
     Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
@@ -53,7 +53,7 @@ router.get("/:id",function(req,res){
         }
     });
 });
-//GET: Campgrounds Edit Page (EDIT) - Shows edit form for one campground
+//GET: /campgrounds/:id/edit (EDIT) - Shows edit form for one campground
 router.get("/:id/edit", function(req,res){
     Campground.findById(req.params.id, function(err, foundCampground){
         if(err){
