@@ -60,7 +60,7 @@ router.get("/:id/edit", checkCampgroundOwnership, function(req,res){
     });
 });
 //PUT: /campgrounds/:id (UPDATE) - Update a particular campground, then redirect back to that /campground/:id page
-router.put("/:id", function(req,res){
+router.put("/:id",checkCampgroundOwnership, function(req,res){
     //.findByIdAndUpdate(id, update, callback)
     Campground.findByIdAndUpdate(req.params.id, req.body.campground,function(err, updatedCampground){
         if(err){
@@ -71,7 +71,7 @@ router.put("/:id", function(req,res){
     });
 });
 //DELETE: /campgrounds/:id (DESTROY) - Delete a particular campground, then redirect back to /campgrounds
-router.delete("/:id", function(req,res){
+router.delete("/:id", checkCampgroundOwnership, function(req,res){
     Campground.findByIdAndRemove(req.params.id, function(err, foundCampground){
         if(err){
             res.redirect("/campgrounds");
