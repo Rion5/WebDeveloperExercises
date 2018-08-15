@@ -46,7 +46,14 @@ router.post("/", isLoggedIn, function(req, res){
 });
 //GET: /campgrounds/:id/comments/:comment_id/edit (EDIT route) - Shows edit form for one comment
 router.get("/:comment_id/edit",function(req,res){
-    res.render("comments/edit");
+    Comment.findById(req.params.comment_id, function(err, foundComment){
+        if(err){
+            res.redirect("back");
+        } else{
+            //NOTE: /campgrounds/:id = req.params.id since we had to pass the campground's id, to reach the comments route
+            res.render("comments/edit", {campground_id: req.params.id, comment: foundComment});
+        }
+    });
 });
 //========================
 // MIDDLEWARE
