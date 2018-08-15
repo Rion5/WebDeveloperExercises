@@ -20,6 +20,7 @@
                     <p><%= campground.description %></p>
                     <p><em>Submitted By <%= campground.author.username %></em></p>
                     <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
+                    <a class="btn btn-danger" href="/campgrounds/<%= campground._id %>/delete">Delete</a>
                 </div>
             </div>
             <div class="well">
