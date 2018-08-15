@@ -6,6 +6,7 @@ var express         = require("express"),
     passport        = require("passport"),
     LocalStrategy   = require("passport-local"),
     methodOverride  = require("method-override"),
+    flash           = require("connect-flash"),
     Campground      = require("./models/campground"),
     Comment         = require("./models/comment"),
     User            = require("./models/user"),
@@ -21,6 +22,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");                  //Allows us to leave out .ejs at the end of res.render pageName.ejs
 app.use(express.static(__dirname+ "/public"));  //__dirname refers to the directory that this script was running from
 app.use(methodOverride("_method"));             //Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
+app.use(flash());                               //connect-flash
 //seedDB(); //Seed the DB
 
 //========================
