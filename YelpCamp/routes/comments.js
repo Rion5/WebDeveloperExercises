@@ -6,7 +6,7 @@ var Campground  = require("../models/campground"),
 //========================
 // COMMENT ROUTES - "/campgrounds/:id/comments"
 //========================
-//GET: Comments (NEW route) - Shows form that will send data to POST route
+//GET: /campgrounds/:id/comments/new (NEW route) - Shows form that will send data to POST route
 router.get("/new", isLoggedIn, function(req,res){
     // Find Campground by id
     Campground.findById(req.params.id, function(err, campground){
@@ -17,7 +17,7 @@ router.get("/new", isLoggedIn, function(req,res){
         }
     });
 });
-//POST: Comments (CREATE route) - Add new comment to DB
+//POST: /campgrounds/:id/comments (CREATE route) - Add new comment to DB
 router.post("/", isLoggedIn, function(req, res){
     //Lookup campground using ID
     Campground.findById(req.params.id, function(err, campground){
@@ -44,6 +44,7 @@ router.post("/", isLoggedIn, function(req, res){
         }
     });   
 });
+
 //========================
 // MIDDLEWARE
 //========================
