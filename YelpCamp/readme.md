@@ -139,3 +139,8 @@ Each Campground has:
 * Add Link to Edit Page
 * Add Update Route
 * Fix $set problem
+
+## 23) Deleting Campground
+
+* Add Destroy Route
+* Add Delete button
