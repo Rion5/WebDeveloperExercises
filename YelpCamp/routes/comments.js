@@ -66,7 +66,16 @@ router.put("/:comment_id", function(req,res){
         }
     });
 });
-
+//DELETE: /campgrounds/:id/comments/:comment_id (DESTROY route) - Update a particular comment, then redirect back to that /campgrounds/:id
+router.delete("/:comment_id", function(req, res){
+    Comment.findByIdAndRemove(req.params.comment_id, function(err, foundComment){
+        if(err){
+            res.redirect("back");
+        } else{
+            res.redirect("/campgrounds/"+req.params.id);
+        }
+    });
+});
 //========================
 // MIDDLEWARE
 //========================
