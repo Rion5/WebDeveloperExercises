@@ -54,13 +54,9 @@ router.get("/:id",function(req,res){
     });
 });
 //GET: /campgrounds/:id/edit (EDIT) - Shows edit form for one campground
-router.get("/:id/edit", function(req,res){
+router.get("/:id/edit", checkCampgroundOwnership, function(req,res){
     Campground.findById(req.params.id, function(err, foundCampground){
-        if(err){
-            res.redirect("/campgrounds");
-        } else{
-            res.render("campgrounds/edit", {campground: foundCampground});
-        }
+        res.render("campgrounds/edit", {campground: foundCampground});
     });
 });
 //PUT: /campgrounds/:id (UPDATE) - Update a particular campground, then redirect back to that /campground/:id page
@@ -93,5 +89,25 @@ function isLoggedIn(req, res, next){
         return next();
     }
     res.redirect("/login");
+}
+//Check if User is the campground's author
+function checkCampgroundOwnership(req, res, next){
+    if(req.isAuthenticated()){
+        Campground.findById(req.params.id, function(err, foundCampground){
+            if(err){
+                res.redirect("back");
+            } else{
+                //2) If they are, does the user match the campground's author? (person who created the campground)
+                if(foundCampground.author.id.equals(req.user._id)){
+                   next();
+                } else{
+                    res.redirect("back");
+                }
+            }
+        });
+    } else{
+        //3) If not, redirect User back to previous page
+        res.redirect("back");   
+    }
 }
 module.exports = router;
