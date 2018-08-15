@@ -144,3 +144,12 @@ Each Campground has:
 
 * Add Destroy Route
 * Add Delete button
+
+## 24) Edit/Delete Authorization
+
+* User can only edit his/her campgrounds
+* User can only delete his/her campgrounds
+* Hide/Show edit and delete buttons
+
+Authentication: Refers to finding out if someone is who they say they are
+Authorization: Once you know someone is, you figure out what they are allowed and not allowed to do
