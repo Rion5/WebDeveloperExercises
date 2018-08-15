@@ -13,6 +13,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
     if(req.isAuthenticated()){
         Campground.findById(req.params.id, function(err, foundCampground){
             if(err){
+                req.flash("error", "Campground was not found");
                 res.redirect("back");
             } else{
                 //2) Does the user match the campground's author? (person who created the campground)
@@ -20,12 +21,14 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
                 if(foundCampground.author.id.equals(req.user._id)){
                    next();
                 } else{
+                    req.flash("error", "You don't have permission to do that");
                     res.redirect("back");
                 }
             }
         });
     } else{
         //3) If not, redirect User back to previous page
+        req.flash("error", "Please Login First!");
         res.redirect("back");   
     }
 };
@@ -35,19 +38,22 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
     if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, function(err, foundComment){
             if(err){
+                req.flash("error", "Comment was not found");
                 res.redirect("back");
             } else{
-                //2) Does the user match the comments's author?
+                //2) Does the user match the comments' author?
                 //     if true, then continue to call the next(); function
                 if(foundComment.author.id.equals(req.user._id)){
                    next();
                 } else{
+                    req.flash("error", "You don't have permission to do that");
                     res.redirect("back");
                 }
             }
         });
     } else{
         //3) If not, redirect User back to previous page
+        req.flash("error", "Please Login First!");
         res.redirect("back");   
     }
 };
