@@ -56,6 +56,9 @@ middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
     }
+    //req.flash("key", "value") //Pass in a key and value before we redirect. To access value, use req.params.flash("key")
+    //Note: flash data will not persist if page is reloaded
+    req.flash("error", "Please Login First!"); 
     res.redirect("/login");
 };
 
