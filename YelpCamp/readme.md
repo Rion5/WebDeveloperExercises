@@ -90,23 +90,23 @@ Each Campground has:
 * Add public directory
 * Add custom stylesheet
 
-## 14) Add User Model (Auth pt. 1)
+## 14) Add User Model (Authentication pt. 1)
 
 * Install all packages needed for authentication
 * Define User Model
 
-## 15) Register (Auth pt. 2)
+## 15) Register (Authentication pt. 2)
 
 * Configure Passport
 * Add register routes
 * Add register template
 
-## 16) Login (Auth pt. 3)
+## 16) Login (Authentication pt. 3)
 
 * Add login routes
 * Add login template
 
-## 17) Logout/Navbar (Auth pt. 4)
+## 17) Logout/Navbar (Authentication pt. 4)
 
 * Add logout route
 * Prevent user from adding a comment if not signed in
@@ -114,7 +114,7 @@ Each Campground has:
 * Show/hide auth links correctly
   * ie - Only show logout link, if user is signed in
 
-## 18) Show/Hide Links (Auth pt. 5)
+## 18) Show/Hide Links (Authentication pt. 5)
 
 * Show/hide authentication links in navbar
 
@@ -145,11 +145,17 @@ Each Campground has:
 * Add Destroy Route
 * Add Delete button
 
-## 24) Edit/Delete Authorization
+## 24) Edit/Delete Campgrounds (Authorization pt. 1)
+
+Authentication: Refers to finding out if someone is who they say they are
+Authorization: Once you know someone is, you figure out what they are allowed and not allowed to do
 
 * User can only edit his/her campgrounds
 * User can only delete his/her campgrounds
 * Hide/Show edit and delete buttons
 
-Authentication: Refers to finding out if someone is who they say they are
-Authorization: Once you know someone is, you figure out what they are allowed and not allowed to do
+## 25) Editing Comments (Authorization pt. 2)
+
+* Add Edit route for comments
+* Add Edit Button
+* Add Update route
