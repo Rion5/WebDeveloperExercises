@@ -63,7 +63,17 @@ router.get("/:id/edit", function(req,res){
         }
     });
 });
-
+//PUT: /campgrounds/:id (Update) - Update a particular campground, then redirect back to that campground/:id page
+router.put("/:id", function(req,res){
+    //.findByIdAndUpdate(id, update, callback)
+    Campground.findByIdAndUpdate(req.params.id, req.body.campground,function(err, updatedCampground){
+        if(err){
+            res.redirect("/campgrounds");
+        } else{
+            res.redirect("/campgrounds/"+updatedCampground._id); //req.params.id will also work for the id
+        }
+    });
+});
 //========================
 // MIDDLEWARE
 //========================
