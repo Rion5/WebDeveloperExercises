@@ -55,7 +55,7 @@ router.get("/:comment_id/edit",function(req,res){
         }
     });
 });
-//PUT: /campgrounds/:id/comments/:comment_id (UPDATE route) - Update a particular comment, then redirect back to that campgrounds/:id
+//PUT: /campgrounds/:id/comments/:comment_id (UPDATE route) - Update a particular comment, then redirect back to that /campgrounds/:id
 router.put("/:comment_id", function(req,res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, foundComment){
         if(err){
@@ -66,6 +66,7 @@ router.put("/:comment_id", function(req,res){
         }
     });
 });
+
 //========================
 // MIDDLEWARE
 //========================
