@@ -92,12 +92,14 @@ function isLoggedIn(req, res, next){
 }
 //Check if User is the campground's author
 function checkCampgroundOwnership(req, res, next){
+    //1) Is user logged in?
     if(req.isAuthenticated()){
         Campground.findById(req.params.id, function(err, foundCampground){
             if(err){
                 res.redirect("back");
             } else{
-                //2) If they are, does the user match the campground's author? (person who created the campground)
+                //2) Does the user match the campground's author? (person who created the campground)
+                //     if true, then continue to call the next(); function
                 if(foundCampground.author.id.equals(req.user._id)){
                    next();
                 } else{
