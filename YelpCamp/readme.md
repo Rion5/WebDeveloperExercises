@@ -168,3 +168,7 @@ Authorization: Once you know someone is, you figure out what they are allowed an
 * Add Delete button
 * User can only delete his/her comment
 * Hide/Show delete button
+
+## 27) Refactor Middleware
+
+* Extract Middleware code into a separate file and require that file.
