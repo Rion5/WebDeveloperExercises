@@ -159,8 +159,12 @@ Authorization: Once you know someone is, you figure out what they are allowed an
 * Add Edit route for comments
 * Add Edit Button
 * Add Update route
+* User can only edit his/her comment
+* Hide/Show edit button
 
 ## 26) Deleting Comments (Authorization pt. 3)
 
 * Add Destroy route
 * Add Delete button
+* User can only delete his/her comment
+* Hide/Show delete button
