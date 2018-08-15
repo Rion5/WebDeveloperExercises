@@ -44,7 +44,10 @@ router.post("/", isLoggedIn, function(req, res){
         }
     });   
 });
-
+//GET: /campgrounds/:id/comments/:comment_id/edit (EDIT route) - Shows edit form for one comment
+router.get("/:comment_id/edit",function(req,res){
+    res.render("comments/edit");
+});
 //========================
 // MIDDLEWARE
 //========================
