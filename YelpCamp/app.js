@@ -1,3 +1,4 @@
+//@ts-nocheck //Turn JavaScript Type Checking off. Shows errors on injected passport methods
 var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
@@ -20,7 +21,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");                  //Allows us to leave out .ejs at the end of res.render pageName.ejs
 app.use(express.static(__dirname+ "/public"));  //__dirname refers to the directory that this script was running from
 app.use(methodOverride("_method"));             //Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
-seedDB(); //Seed the DB
+//seedDB(); //Seed the DB
 
 //========================
 // PASSPORT CONFIGURATIONS
