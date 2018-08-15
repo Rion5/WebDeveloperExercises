@@ -53,6 +53,12 @@ router.get("/:id",function(req,res){
         }
     });
 });
+//GET: Campgrounds Edit Page (EDIT) - Shows edit form for one campground
+router.get("/:id/edit", function(req,res){
+    //Campground.findById(req.params.id).
+    res.render("campgrounds/edit");
+});
+
 //========================
 // MIDDLEWARE
 //========================
