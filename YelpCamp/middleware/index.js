@@ -1,9 +1,13 @@
+//Models
+var Campground  = require("../models/campground"),
+    Comment     = require("../models/comment");
 //========================
 // MIDDLEWARE
 //========================
 //Create an empty middlewareObj
 var middlewareObj = {};
 //Add middleware functions as object properties
+//Check if User is the campground's author
 middlewareObj.checkCampgroundOwnership = function(req, res, next){
     //1) Is user logged in?
     if(req.isAuthenticated()){
@@ -25,6 +29,7 @@ middlewareObj.checkCampgroundOwnership = function(req, res, next){
         res.redirect("back");   
     }
 };
+//Check if User is the comment's author
 middlewareObj.checkCommentOwnership = function(req, res, next){
     //1) Is user logged in?
     if(req.isAuthenticated()){
@@ -46,6 +51,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next){
         res.redirect("back");   
     }
 };
+//Check there is a User Logged in
 middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
