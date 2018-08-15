@@ -45,7 +45,7 @@ router.post("/", isLoggedIn, function(req, res){
     });   
 });
 //GET: /campgrounds/:id/comments/:comment_id/edit (EDIT route) - Shows edit form for one comment
-router.get("/:comment_id/edit",function(req,res){
+router.get("/:comment_id/edit", checkCommentOwnership,function(req,res){
     Comment.findById(req.params.comment_id, function(err, foundComment){
         if(err){
             res.redirect("back");
@@ -56,7 +56,7 @@ router.get("/:comment_id/edit",function(req,res){
     });
 });
 //PUT: /campgrounds/:id/comments/:comment_id (UPDATE route) - Update a particular comment, then redirect back to that /campgrounds/:id
-router.put("/:comment_id", function(req,res){
+router.put("/:comment_id", checkCommentOwnership, function(req,res){
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, foundComment){
         if(err){
             res.redirect("back");
@@ -67,7 +67,7 @@ router.put("/:comment_id", function(req,res){
     });
 });
 //DELETE: /campgrounds/:id/comments/:comment_id (DESTROY route) - Update a particular comment, then redirect back to that /campgrounds/:id
-router.delete("/:comment_id", function(req, res){
+router.delete("/:comment_id", checkCommentOwnership, function(req, res){
     Comment.findByIdAndRemove(req.params.comment_id, function(err, foundComment){
         if(err){
             res.redirect("back");
@@ -85,6 +85,28 @@ function isLoggedIn(req, res, next){
         return next();
     }
     res.redirect("/login");
+}
+//Check if User is the comment's author (person who created the campground)
+function checkCommentOwnership(req, res, next){
+    //1) Is user logged in?
+    if(req.isAuthenticated()){
+        Comment.findById(req.params.comment_id, function(err, foundComment){
+            if(err){
+                res.redirect("back");
+            } else{
+                //2) Does the user match the comments's author?
+                //     if true, then continue to call the next(); function
+                if(foundComment.author.id.equals(req.user._id)){
+                   next();
+                } else{
+                    res.redirect("back");
+                }
+            }
+        });
+    } else{
+        //3) If not, redirect User back to previous page
+        res.redirect("back");   
+    }
 }
 
 module.exports = router;
