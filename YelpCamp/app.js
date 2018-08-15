@@ -41,6 +41,7 @@ passport.deserializeUser(User.deserializeUser());
 //This middleware will be called on every route
 app.use(function(req,res, next){
     res.locals.currentUser = req.user;
+    res.locals.flashMessage = req.flash("error"); //Anything in the flash can be accessed under 'flashMessage'
     next();
 });
 //========================
