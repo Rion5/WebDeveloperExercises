@@ -178,3 +178,16 @@ Authorization: Once you know someone is, you figure out what they are allowed an
 * Demo working version
 * Install and configure connect-flash
 * Add bootstrap alerts to header
+
+## 29) Google Maps API
+
+* Get Google Maps API Key
+  * Restrict Google Maps API Key
+* Get another key for Geocoding API
+  * Add to application as ENV variable
+* Add Google Maps scripts to your application
+* Display the campground location in show.ejs
+* Update campground model
+* Update new and edit forms
+  * Add location input field
+* Update campground routes
