@@ -25,14 +25,15 @@ router.get("/new",middleware.isLoggedIn, function(req,res){
 //POST: /campgrounds (CREATE) - Add new campground to DB
 router.post("/", middleware.isLoggedIn,function(req,res){
     // Get data from form and add to campgrounds array
-    var name = req.body.name;  
+    var name = req.body.name;
+    var price = req.body.price;  
     var image = req.body.image;
     var desc = req.body.description;
     var author = {
         id: req.user._id,
         username: req.user.username
     };
-    var newCampground = {name: name, image: image, description: desc, author:author}; //{name: data}
+    var newCampground = {name: name, price: price, image: image, description: desc, author:author}; //{name: data}
     // Create a new campground and save to DB
     Campground.create(newCampground, function(err, newlyCreated){
         if(err){
