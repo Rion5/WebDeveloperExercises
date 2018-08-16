@@ -16,7 +16,7 @@ router.get("/",function(req,res){
 //========================
 //Show Login Form
 router.get("/login", function(req, res){
-    res.render("login");
+    res.render("login", {page: 'login'});
 });
 //Handle Login Logic using passport middleware
 //app.post("/login", middleware, callback)
@@ -29,7 +29,7 @@ router.post("/login", passport.authenticate("local", {
 });
 //Show Register Form
 router.get("/register", function(req, res){
-    res.render("register");
+    res.render("register", {page: 'register'});
 });
 //Handle Sign-Up Logic
 router.post("/register", function(req,res){

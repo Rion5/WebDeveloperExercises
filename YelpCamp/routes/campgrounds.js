@@ -14,7 +14,7 @@ router.get("/", function(req,res){
         if(err){
             console.log(err);
         } else{
-            res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user}); //{name: data} name can be anything, data must be allCampgrounds
+            res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds'}); //{name: data} name can be anything, data must be allCampgrounds
         }
     });
 });
