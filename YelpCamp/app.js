@@ -1,4 +1,6 @@
 //@ts-nocheck //Turn JavaScript Type Checking off. Shows errors on injected passport methods
+require('dotenv').config();
+
 var express         = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
