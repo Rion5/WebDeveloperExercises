@@ -3,6 +3,15 @@ var router = express.Router();
 //Models
 var Campground  = require("../models/campground");
 var middleware  = require("../middleware"); //If we require the middleware directory, it will automatically require the contents of index.js
+//NodeGeocoder
+var NodeGeocoder = require("node-geocoder");
+var options = {
+    provider: "google",
+    httpAdapter: "https",
+    apiKey: process.env.GEOCODER_API_KEY,
+    formatter: null
+};
+var geocoder = NodeGeocoder(options);
 
 //========================
 // CAMPGROUND ROUTES - '/campgrounds'
