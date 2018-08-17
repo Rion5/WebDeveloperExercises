@@ -25,6 +25,7 @@ app.set("view engine", "ejs");                  //Allows us to leave out .ejs at
 app.use(express.static(__dirname+ "/public"));  //__dirname refers to the directory that this script was running from
 app.use(methodOverride("_method"));             //Lets you use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
 app.use(flash());                               //connect-flash
+app.locals.moment = require("moment");
 //seedDB(); //Seed the DB
 
 //========================
