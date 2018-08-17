@@ -42,16 +42,25 @@ router.post("/", middleware.isLoggedIn,function(req,res){
         id: req.user._id,
         username: req.user.username
     };
-    var newCampground = {name: name, price: price, image: image, description: desc, author:author}; //{name: data}
-    // Create a new campground and save to DB
-    Campground.create(newCampground, function(err, newlyCreated){
-        if(err){
-            console.log(err);
-            req.flash("error", "Something went wrong!");
-        } else{
-            req.flash("success", "Successfully added a new campground!");
-            res.redirect("/campgrounds");   // Redirect back to campgrounds page as a GET request
+    geocoder.geocode(req.body.location, function(err, data){
+        if(err || !data.length){
+            req.flash("error", "Invalid Address");
+            return res.redirect("back");
         }
+        var lat = data[0].latitude;
+        var lng = data[0].longitude;
+        var location = data[0].formattedAddress;
+        var newCampground = {name: name, price: price, image: image, description: desc, author:author, location: location, lat: lat, lng: lng}; //{name: data}
+        // Create a new campground and save to DB
+        Campground.create(newCampground, function(err, newlyCreated){
+            if(err){
+                console.log(err);
+                req.flash("error", "Something went wrong!");
+            } else{
+                req.flash("success", "Successfully added a new campground!");
+                res.redirect("/campgrounds");   // Redirect back to campgrounds page as a GET request
+            }
+        });
     });
 });
 //GET: /campgrounds/:id (SHOW) - Shows info about one campground
