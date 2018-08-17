@@ -18,15 +18,30 @@ var geocoder = NodeGeocoder(options);
 //========================
 //GET: /campgrounds (INDEX) - Display a list of all campgrounds
 router.get("/", function(req,res){
-    //Get all campgrounds from DB
-    Campground.find({}, function(err, allCampgrounds){
-        if(err){
-            console.log(err);
-        } else{
-            res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds'}); //{name: data} name can be anything, data must be allCampgrounds
-        }
-    });
+    if(req.query.search){
+        const regex = new RegExp(escapeRegex(req.query.search), 'gi');
+        Campground.find({name: regex}, function(err, allCampgrounds){
+            if(err){
+                console.log(err);
+            } else{
+                res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds'}); //{name: data} name can be anything, data must be allCampgrounds
+            }
+        });
+    } else{
+        //Get all campgrounds from DB
+        Campground.find({}, function(err, allCampgrounds){
+            if(err){
+                console.log(err);
+            } else{
+                res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds'}); //{name: data} name can be anything, data must be allCampgrounds
+            }
+        });
+    }
 });
+//Fuzzy Search
+function escapeRegex(text){
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+}
 //GET: /campgrounds/new (NEW) - Displays form to make a new campground
 router.get("/new",middleware.isLoggedIn, function(req,res){
     res.render("campgrounds/new.ejs");
