@@ -18,13 +18,17 @@ var geocoder = NodeGeocoder(options);
 //========================
 //GET: /campgrounds (INDEX) - Display a list of all campgrounds
 router.get("/", function(req,res){
+    var noMatch = null;
     if(req.query.search){
         const regex = new RegExp(escapeRegex(req.query.search), 'gi');
         Campground.find({name: regex}, function(err, allCampgrounds){
             if(err){
                 console.log(err);
             } else{
-                res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds'}); //{name: data} name can be anything, data must be allCampgrounds
+                if(allCampgrounds.length < 1) {
+                    noMatch = "No campgrounds found, please try again.";
+                }
+                res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds', noMatch: noMatch}); //{name: data} name can be anything, data must be allCampgrounds
             }
         });
     } else{
@@ -33,7 +37,7 @@ router.get("/", function(req,res){
             if(err){
                 console.log(err);
             } else{
-                res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds'}); //{name: data} name can be anything, data must be allCampgrounds
+                res.render("campgrounds/index.ejs", {campgrounds:allCampgrounds, currentUser: req.user, page: 'campgrounds', noMatch: noMatch}); //{name: data} name can be anything, data must be allCampgrounds
             }
         });
     }
