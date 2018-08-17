@@ -88,16 +88,26 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership, function(req,res){
 });
 //PUT: /campgrounds/:id (UPDATE) - Update a particular campground, then redirect back to that /campground/:id page
 router.put("/:id",middleware.checkCampgroundOwnership, function(req,res){
-    //.findByIdAndUpdate(id, update, callback)
-    Campground.findByIdAndUpdate(req.params.id, req.body.campground,function(err, updatedCampground){
-        if(err){
-            console.log(err);
-            req.flash("error", "Update Failed: Something went wrong!");
-            res.redirect("/campgrounds");
-        } else{
-            req.flash("success", "Successfully updated campground");
-            res.redirect("/campgrounds/"+updatedCampground._id); //req.params.id will also work for the id
+    geocoder.geocode(req.body.location, function(err, data){
+        if(err || !data.length){
+            req.flash("error", err.message);
+            return res.redirect("back");
         }
+        var lat = data[0].latitude;
+        var lng = data[0].longitude;
+        var location = data[0].formattedAddress;
+        var newCampground = {name: req.body.name, image: req.body.image, description: req.body.description, location: location, latitude: lat, longitude: lng};
+        //.findByIdAndUpdate(id, update, callback)
+        Campground.findByIdAndUpdate(req.params.id, req.body.campground,function(err, updatedCampground){
+            if(err){
+                console.log(err);
+                req.flash("error", "Update Failed: Something went wrong!");
+                res.redirect("/campgrounds");
+            } else{
+                req.flash("success", "Successfully updated campground");
+                res.redirect("/campgrounds/"+updatedCampground._id); //req.params.id will also work for the id
+            }
+        });
     });
 });
 //DELETE: /campgrounds/:id (DESTROY) - Delete a particular campground, then redirect back to /campgrounds
