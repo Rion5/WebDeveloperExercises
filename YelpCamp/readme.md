@@ -191,3 +191,10 @@ Authorization: Once you know someone is, you figure out what they are allowed an
 * Update new and edit forms
   * Add location input field
 * Update campground routes
+
+## 30) Time since created with Moment JS
+
+* Install moment js
+* Require moment and add to app.locals
+* Update campground and comment models
+* Use moment in show.ejs file
