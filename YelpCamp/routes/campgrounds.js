@@ -38,7 +38,7 @@ router.get("/", function(req,res){
                         currentUser: req.user,
                         currentPage: pageNumber, 
                         page: 'campgrounds',
-                        pages: Math.ceil(count / perPage), 
+                        pages: Math.ceil(count / perPage),
                         noMatch: noMatch,
                         search: req.query.search
                     }); 
