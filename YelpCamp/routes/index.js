@@ -61,5 +61,15 @@ router.get("/logout", function(req,res){
     req.flash("success", "Logged Out!");
     res.redirect("/campgrounds");
 });
+//User Profile
+router.get("/users/:id", function(req, res){
+    User.findById(req.params.id, function(err, foundUser){
+        if(err){
+            req.flash("error", "User was not found");
+            res.redirect("/");
+        }
+        res.render("users/show.ejs", {user: foundUser});
+    });
+});
 
 module.exports = router;
