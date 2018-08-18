@@ -68,7 +68,13 @@ router.get("/users/:id", function(req, res){
             req.flash("error", "User was not found");
             res.redirect("/");
         }
-        res.render("users/show.ejs", {user: foundUser});
+        Campground.findById().where("author.id").equals(foundUser._id).exec(function(err, campgrounds){
+            if(err){
+                req.flash("error", "User was not found");
+                res.redirect("/");
+            }
+            res.render("users/show.ejs", {user: foundUser});
+        });
     });
 });
 
