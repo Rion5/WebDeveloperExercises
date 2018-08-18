@@ -34,7 +34,13 @@ router.get("/register", function(req, res){
 //Handle Sign-Up Logic
 router.post("/register", function(req,res){
     //Create new user object,
-    var newUser = new User({username: req.body.username});
+    var newUser = new User({
+        username: req.body.username, 
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email:  req.body.email,
+        avatar:  req.body.avatar
+    });
     //.register is from 'passport-local-mongoose'
     User.register(newUser, req.body.password, function(err, user){
         if(err){
