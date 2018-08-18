@@ -18,7 +18,7 @@
                 <h4 class = "pull-right">$<%= campground.price%> / Night</h4>
                 <h4><a href="#"><%= campground.name %></a></h4>
                 <p><%= campground.description %></p>
-                <p><em>Submitted By <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %></em></p>
+                <p><em>Submitted By: <a href="/users/<%= campground.author.id %>"><%= campground.author.username %></a>, <%= moment(campground.createdAt).fromNow() %></em></p>
                 <% if(currentUser && campground.author.id.equals(currentUser._id)){ %> <!--Every route will have currentUser from res.locals.currentUser = req.user in app.js-->
                     <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
                     <form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
