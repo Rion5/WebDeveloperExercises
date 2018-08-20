@@ -16,7 +16,8 @@ var express         = require("express"),
 
 var indexRoutes     = require("./routes/index"),
     campgroundRoutes= require("./routes/campgrounds"),
-    commentRoutes   = require("./routes/comments");
+    commentRoutes   = require("./routes/comments"),
+    userRoutes      = require("./routes/users");
     
 
 mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
@@ -55,6 +56,7 @@ app.use(function(req,res, next){
 app.use("/",indexRoutes);
 app.use("/campgrounds", campgroundRoutes); //appends '/campgrounds' to each request. Helps keep code DRY since we don't have to type out app.get(/campgrounds/...)
 app.use("/campgrounds/:id/comments",commentRoutes);
+app.use("/users", userRoutes);
 //========================
 // ERROR Page
 //========================
