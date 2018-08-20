@@ -10,7 +10,6 @@ var User        = require("../models/user"),
 // USER ROUTES
 //========================
 // GET: /users/new (NEW route) - Displays form to make a new User
-//TODO: Rename route from /register to /users/new
 router.get("/new", function(req, res){
     res.render("users/new", {page: 'register'});
 });
@@ -56,6 +55,7 @@ router.get("/:id", function(req, res){
         });
     });
 });
+//TODO: Rename route from /register to /users/new
 //GET: /users/:id/edit (EDIT route) - Shows edit form for one User
 //PUT: /users/:id (UPDATE route) - Update a particular user, then redirect back to SHOW route
 //DELETE:  /users/:id (DESTROY route) - Delete a particular User, then redirect back to Campgrounds SHOW route
