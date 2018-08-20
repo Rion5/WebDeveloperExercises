@@ -69,5 +69,18 @@ router.get("/:id/edit", function(req,res){
     });
 });
 //PUT: /users/:id (UPDATE route) - Update a particular user, then redirect back to SHOW route
+router.put("/:id", function(req,res){
+    //Leavng off here. Getting error when trying to update. Says User is already registered
+    User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
+        if(err){
+            console.log(err.message);
+            req.flash("error","Something went wrong!");
+            res.redirect("back");
+        } else{
+            req.flash("success", "Successfully created new user account!");
+            res.redirect("back");
+        }
+    });
+});
 //DELETE:  /users/:id (DESTROY route) - Delete a particular User, then redirect back to Campgrounds SHOW route
 module.exports = router;
