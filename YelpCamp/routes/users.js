@@ -12,7 +12,7 @@ var User        = require("../models/user"),
 // GET: /users/new (NEW route) - Displays form to make a new User
 //TODO: Rename route from /register to /users/new
 router.get("/new", function(req, res){
-    res.render("register", {page: 'register'});
+    res.render("users/new", {page: 'register'});
 });
 //POST: /users (CREATE route) - Add new User to DB
 //Handle User Register Logic
