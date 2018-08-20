@@ -57,6 +57,17 @@ router.get("/:id", function(req, res){
 });
 //TODO: Rename route from /register to /users/new
 //GET: /users/:id/edit (EDIT route) - Shows edit form for one User
+router.get("/:id/edit", function(req,res){
+    User.findById(req.params.id, function(err, foundUser){
+        if(err){
+            console.log(err.message);
+            req.flash("error", "User was not found");
+            return res.redirect("back");
+        } else{
+            res.render("users/edit.ejs", {user: foundUser});
+        }
+    });
+});
 //PUT: /users/:id (UPDATE route) - Update a particular user, then redirect back to SHOW route
 //DELETE:  /users/:id (DESTROY route) - Delete a particular User, then redirect back to Campgrounds SHOW route
 module.exports = router;
