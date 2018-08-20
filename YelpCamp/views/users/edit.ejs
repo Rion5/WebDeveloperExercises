@@ -1,3 +1,29 @@
 <%include ../partials/header.ejs %>
 <h1 style="text-align: center">User's EDIT Route</h1>
+<div style ="width: 30%; margin: 25px auto;">
+    <form action="/users" method="POST">
+        <div class="form-group">
+            <input type="text" class = "form-control" name="username" placeholder="Username" value="<%= user.username %>" readonly>
+        </div>
+        <div class="form-group">
+            <input type="password" class = "form-control" name="password" placeholder="Password" >
+        </div>
+        <div class="form-group">
+            <input type="text" class = "form-control" name="firstName" placeholder="First Name" value = "<%= user.firstName %>">
+        </div>
+        <div class="form-group">
+            <input type="text" class = "form-control" name="lastName" placeholder="Last Name" value = "<%= user.lastName %>">
+        </div>
+        <div class="form-group">
+            <input type="email" class = "form-control" name="email" placeholder="Email" value = "<%= user.email %>">
+        </div>
+        <div class="form-group">
+            <input type="text" class = "form-control" name="avatar" placeholder="Avatar Url">
+        </div>
+        <div class="form-group">
+            <button class = "btn btn-primary btn-block">Update!</button>
+        </div>
+    </form>
+    <a href="/campgrounds">Go Back</a>
+</div>
 <%include ../partials/footer.ejs %>
