@@ -27,34 +27,6 @@ router.post("/login", passport.authenticate("local", {
 }), function(req,res){
     
 });
-//Show Register Form
-router.get("/register", function(req, res){
-    res.render("register", {page: 'register'});
-});
-//Handle Sign-Up Logic
-router.post("/register", function(req,res){
-    //Create new user object,
-    var newUser = new User({
-        username: req.body.username, 
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email:  req.body.email,
-        avatar:  req.body.avatar
-    });
-    //.register is from 'passport-local-mongoose'
-    User.register(newUser, req.body.password, function(err, user){
-        if(err){
-            console.log(err);
-            req.flash("error", err.message);
-            return res.redirect("register");
-        } else{
-            passport.authenticate("local")(req,res,function(){
-                req.flash("success", "Welcome to YelpCamp "+user.username);
-                res.redirect("/campgrounds");
-            });
-        }
-    });
-});
 //Logout Route
 router.get("/logout", function(req,res){
     req.logout();

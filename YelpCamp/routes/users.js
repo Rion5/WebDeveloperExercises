@@ -10,8 +10,35 @@ var User        = require("../models/user"),
 // USER ROUTES
 //========================
 // GET: /users/new (NEW route) - Displays form to make a new User
+//TODO: Rename route from /register to /users/new
+router.get("/new", function(req, res){
+    res.render("register", {page: 'register'});
+});
 //POST: /users (CREATE route) - Add new User to DB
-
+//Handle User Register Logic
+router.post("/", function(req,res){
+    //Create new user object,
+    var newUser = new User({
+        username: req.body.username, 
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email:  req.body.email,
+        avatar:  req.body.avatar
+    });
+    //.register is from 'passport-local-mongoose'
+    User.register(newUser, req.body.password, function(err, user){
+        if(err){
+            console.log(err);
+            req.flash("error", err.message);
+            return res.redirect("register");
+        } else{
+            passport.authenticate("local")(req,res,function(){
+                req.flash("success", "Welcome to YelpCamp "+user.username);
+                res.redirect("/campgrounds");
+            });
+        }
+    });
+});
 // GET: /users/:id (SHOW route) - Shows info about one User
 router.get("/:id", function(req, res){
     User.findById(req.params.id, function(err, foundUser){
