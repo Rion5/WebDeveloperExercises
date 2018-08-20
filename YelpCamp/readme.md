@@ -198,3 +198,8 @@ Authorization: Once you know someone is, you figure out what they are allowed an
 * Require moment and add to app.locals
 * Update campground and comment models
 * Use moment in show.ejs file
+
+## 31) User Profile Page
+
+* Update User Schema
+* Create User Edit Route
