@@ -9,9 +9,10 @@ var User        = require("../models/user"),
 //========================
 // USER ROUTES
 //========================
-//TODO: SHOW / CREATE / UPDATE Routes
+// GET: /users/new (NEW route) - Displays form to make a new User
+//POST: /users (CREATE route) - Add new User to DB
 
-//GET: /users/:id (SHOW route) - Shows info about one User
+// GET: /users/:id (SHOW route) - Shows info about one User
 router.get("/:id", function(req, res){
     User.findById(req.params.id, function(err, foundUser){
         if(err){
@@ -28,4 +29,7 @@ router.get("/:id", function(req, res){
         });
     });
 });
+//GET: /users/:id/edit (EDIT route) - Shows edit form for one User
+//PUT: /users/:id (UPDATE route) - Update a particular user, then redirect back to SHOW route
+//DELETE:  /users/:id (DESTROY route) - Delete a particular User, then redirect back to Campgrounds SHOW route
 module.exports = router;
