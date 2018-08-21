@@ -69,8 +69,7 @@ middlewareObj.checkUserOwnership = function(req, res, next){
                 req.flash("error", "User was not found");
                 res.redirect("back");
             } else {
-                //Error occurs here in _id
-                if(foundUser.user.id.equals(req.params.user_id)){
+                if(foundUser._id.equals(req.user._id)){
                     next();
                 } else {
                     req.flash("error", "You don't have permission to do that");
