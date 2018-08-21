@@ -70,7 +70,7 @@ router.get("/:user_id/edit",middleware.checkUserOwnership, function(req,res){
     });
 });
 //PUT: /users/:id (UPDATE route) - Update a particular user, then redirect back to SHOW route
-router.put("/:user_id", function(req,res){
+router.put("/:user_id", middleware.checkUserOwnership, function(req,res){
     User.findByIdAndUpdate(req.params.user_id, req.body.user, function(err, updatedUser){
         if(err){
             console.log(err.message);
@@ -78,7 +78,7 @@ router.put("/:user_id", function(req,res){
             res.redirect("back");
         } else{
             req.flash("success", "Successfully updated user account!");
-            res.redirect("back");
+            res.redirect("/users/"+updatedUser._id);
         }
     });
 });
