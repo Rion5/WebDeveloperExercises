@@ -59,7 +59,7 @@ router.get("/:user_id", function(req, res){
 //TODO: Rename route from /register to /users/new
 //GET: /users/:id/edit (EDIT route) - Shows edit form for one User
 router.get("/:user_id/edit",middleware.checkUserOwnership, function(req,res){
-    User.findById(req.params.user_id, middleware, function(err, foundUser){
+    User.findById(req.params.user_id, function(err, foundUser){
         if(err){
             console.log(err.message);
             req.flash("error", "User was not found");
@@ -71,14 +71,13 @@ router.get("/:user_id/edit",middleware.checkUserOwnership, function(req,res){
 });
 //PUT: /users/:id (UPDATE route) - Update a particular user, then redirect back to SHOW route
 router.put("/:user_id", function(req,res){
-    //Leavng off here. Getting error when trying to update. Says User is already registered
     User.findByIdAndUpdate(req.params.user_id, req.body.user, function(err, updatedUser){
         if(err){
             console.log(err.message);
             req.flash("error","Something went wrong!");
             res.redirect("back");
         } else{
-            req.flash("success", "Successfully created new user account!");
+            req.flash("success", "Successfully updated user account!");
             res.redirect("back");
         }
     });
