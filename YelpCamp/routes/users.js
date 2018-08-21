@@ -6,6 +6,7 @@ var User        = require("../models/user"),
     Campground  = require("../models/campground"),
     Comment     = require("../models/comment");
 
+var middleware  = require("../middleware");
 //========================
 // USER ROUTES
 //========================
@@ -39,8 +40,8 @@ router.post("/", function(req,res){
     });
 });
 // GET: /users/:id (SHOW route) - Shows info about one User
-router.get("/:id", function(req, res){
-    User.findById(req.params.id, function(err, foundUser){
+router.get("/:user_id", function(req, res){
+    User.findById(req.params.user_id, function(err, foundUser){
         if(err){
             req.flash("error", "User was not found");
             return res.redirect("/");
@@ -57,8 +58,8 @@ router.get("/:id", function(req, res){
 });
 //TODO: Rename route from /register to /users/new
 //GET: /users/:id/edit (EDIT route) - Shows edit form for one User
-router.get("/:id/edit", function(req,res){
-    User.findById(req.params.id, function(err, foundUser){
+router.get("/:user_id/edit",middleware.checkUserOwnership, function(req,res){
+    User.findById(req.params.user_id, middleware, function(err, foundUser){
         if(err){
             console.log(err.message);
             req.flash("error", "User was not found");
@@ -69,9 +70,9 @@ router.get("/:id/edit", function(req,res){
     });
 });
 //PUT: /users/:id (UPDATE route) - Update a particular user, then redirect back to SHOW route
-router.put("/:id", function(req,res){
+router.put("/:user_id", function(req,res){
     //Leavng off here. Getting error when trying to update. Says User is already registered
-    User.findByIdAndUpdate(req.params.id, req.body.user, function(err, updatedUser){
+    User.findByIdAndUpdate(req.params.user_id, req.body.user, function(err, updatedUser){
         if(err){
             console.log(err.message);
             req.flash("error","Something went wrong!");
