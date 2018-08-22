@@ -203,3 +203,5 @@ Authorization: Once you know someone is, you figure out what they are allowed an
 
 * Update User Schema
 * Create User Edit Route
+* Create User Update Route
+* Add Middleware to Authenticate and Authorization
