@@ -20,7 +20,9 @@ var indexRoutes     = require("./routes/index"),
     userRoutes      = require("./routes/users");
     
 
-mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
+// mongoose.connect("mongodb://localhost:27017/yelpCamp", {useNewUrlParser: true});
+mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true}); //DATABASEURL contains MongoDB URL to mLab hosted dataset
+
 app.use(bodyParser.urlencoded({extended: true})); 
 app.set("view engine", "ejs");                  //Allows us to leave out .ejs at the end of res.render pageName.ejs
 app.use(express.static(__dirname+ "/public"));  //__dirname refers to the directory that this script was running from
