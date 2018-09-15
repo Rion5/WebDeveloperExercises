@@ -35,8 +35,8 @@
 
 # NoSQL Example
 
-```SQL
---Looks like JSON, but is BSON (Binary JSON)
+Looks like JSON, but is BSON (Binary JSON)
+```
 {
   Name: "Kevin",
   Age: 17,
