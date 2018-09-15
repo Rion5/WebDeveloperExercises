@@ -1,4 +1,4 @@
-#Intro to Node
+# Intro to Node
 
 * Learn what Node.js is
 * Interact with Node Console
