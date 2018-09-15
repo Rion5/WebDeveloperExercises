@@ -7,31 +7,36 @@
   * Has an interface
 * SQL (Relational) vs NoSQL (Non-Relational)
 
-==========================
-SQL Example
-==========================
+---
 
-Users Table
-Id | Name | Age | City
---------------------------
-1  | Chai | 24  | Denver
-2  | Tim  | 32  | NYC
+## SQL Example
 
-Comments Table
-Id | Text 
---------------------------
-1  | "Lol"
-2  | "Cool Picture!"
+## Users Table
 
-User / Comment Join Table
-UserId | CommentId
---------------------------
-1      | 1
+|Id           |Name           |Age            |City           |
+|-------------|:--------------|:-------------:|:--------------|
+|1            |John           |24             |Denver         |
+|2            |Tim            |32             |NYC            |
 
-==========================
-NoSQL Example
-==========================
-Looks like JSON, but is BSON (Binary JSON)
+## Comments Table
+
+|Id           |Text           |
+|-------------|:--------------|
+|1            |"Lol"          |
+|2            |"Cool Picture!"|
+
+## User / Comment Join Table
+
+|UserId       |CommentId      |
+|-------------|:--------------|
+|1            |1              |
+
+---
+
+# NoSQL Example
+
+```SQL
+--Looks like JSON, but is BSON (Binary JSON)
 {
   Name: "Kevin",
   Age: 17,
@@ -41,6 +46,7 @@ Looks like JSON, but is BSON (Binary JSON)
     {text: "Cool Picture!"}
   ]
 }
+```
 
 # Important Mongo Commands
 
@@ -53,7 +59,7 @@ Looks like JSON, but is BSON (Binary JSON)
   * Example: db.dogs.insert({name: "Tux", breed: "Yorkie-Poodle"})
 * find
   * Example: db.dogs.find()
-  *          db.dogs.find({name: "Tux"})
+    * db.dogs.find({name: "Tux"})
 * update
   * Example: db.dogs.update({name:"Tux"}, {breed: "Poodle"})
     * The line above will find a dog named Tux, and update his information so that it only contains breed = Poodle. If we wanted to update Tux so that we just update his breed, use the code found below.
