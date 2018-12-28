@@ -18,10 +18,14 @@ https://rion5.github.io/WebDeveloperExercises/
 * **Node**
   * Express
   * Mongo / Mongoose
-    * [Project: YelpCamp](https://github.com/Rion5/WebDeveloperExercises/tree/master/YelpCamp)
-  
-![image](https://user-images.githubusercontent.com/31965265/42188082-7225daaa-7e20-11e8-9812-35ef20251ec0.png)
-  
-**+CSS Update**
+    * [Project: YelpCamp](https://yelp-camp-application.herokuapp.com/)
+
+### Screenshots
+
+#### Guess the Color Game
+
 ![image](https://user-images.githubusercontent.com/31965265/45579525-4b033600-b856-11e8-9ab3-b334d080dce2.png)
 
+#### YelpCamp
+
+![image](https://user-images.githubusercontent.com/31965265/50530233-8b1abb80-0ac9-11e9-9e1a-7fe74bd67336.png)
